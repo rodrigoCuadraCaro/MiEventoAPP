@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MenuAsistente"
+    android:padding="16dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.3"
+            android:layout_gravity="top">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="BIENVENIDO [NOMBRE]"
+                android:textSize="50sp"
+                android:gravity="center">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.7"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15sp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/bttnEventos"
+                    android:layout_marginEnd="15sp"
+                    android:layout_width="170sp"
+                    android:layout_height="120sp"
+                    android:text="EVENTOS"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_menu"
+                    android:elevation="100sp"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/bttnMiPerfil"
+                    android:layout_width="170sp"
+                    android:layout_height="120sp"
+                    android:text="MI PERFIL"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_menu"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+                </Button>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="15sp"
+                android:gravity="center"
+                >
+
+                <Button
+                    android:id="@+id/bttnGuardados"
+                    android:layout_marginEnd="15sp"
+                    android:layout_width="170sp"
+                    android:layout_height="120sp"
+                    android:text="GUARDADOS"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_menu"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </Button>
+
+                <Button
+                    android:id="@+id/bttnCerrarSesion"
+                    android:layout_width="170sp"
+                    android:layout_height="120sp"
+                    android:text="CERRAR SESIÓN"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_menu"
+                    android:textSize="20sp"
+                    android:textStyle="bold">
+
+                </Button>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

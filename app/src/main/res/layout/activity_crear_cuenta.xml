@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CrearCuenta"
+    android:padding="16dp">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      android:weightSum="1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:gravity="center"
+          android:text="Crear Cuenta"
+          android:textSize="50sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.79"
+        android:orientation="vertical">
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_gravity="top"
+          android:layout_marginTop="20sp"
+          android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/register_username"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:hint="Nombre"
+            android:inputType="textPersonName"
+
+            android:padding="10sp" />
+
+        <EditText
+            android:id="@+id/regiter_email"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:hint="Correo"
+            android:inputType="textEmailAddress"
+            android:layout_marginTop="30sp"
+            android:padding="10sp" />
+
+        <EditText
+            android:id="@+id/register_password"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_email"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:layout_marginTop="30sp"
+            android:padding="10sp" />
+
+        <EditText
+            android:id="@+id/register_confirmPassword"
+            android:layout_width="255dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30sp"
+            android:layout_weight="1"
+            android:background="@drawable/custom_input"
+            android:drawableStart="@drawable/ic_key"
+            android:drawablePadding="10sp"
+            android:ems="10"
+            android:hint="@string/pass"
+            android:inputType="textPassword"
+            android:padding="10sp" />
+
+      </LinearLayout>
+
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="261dp"
+          android:layout_marginTop="30sp"
+          android:layout_weight="0.1"
+          android:gravity="center"
+          android:orientation="vertical"
+          tools:ignore="NestedWeights">
+
+        <Button
+            android:id="@+id/bttnCrearCuenta"
+            android:layout_width="257sp"
+            android:layout_height="60sp"
+            android:background="@drawable/custom_button"
+            android:text="CREA TU CUENTA" />
+
+        <Button
+            android:id="@+id/bttnVolver"
+            android:layout_width="243dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="20sp"
+            android:background="@drawable/custom_button"
+            android:text="VOLVER" />
+
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+</RelativeLayout>

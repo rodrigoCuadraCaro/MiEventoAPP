@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.112" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/button_menu.xml" value="0.3445" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/custom_button.xml" value="0.3635" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/custom_input.xml" value="0.308" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/ic_baseline_event_available_24.xml" value="0.3445" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/ic_email.xml" value="0.247" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/ic_key.xml" value="0.247" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/drawable/ic_launcher_background.xml" value="0.112" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/Guardados.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/ModificarPerfilAsistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_crear_cuenta.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_drawer.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_drawer_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_eventos_guardados_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_feed_asistente.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_menu_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_modificar_perfil_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/app_bar_drawer_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/app_bar_drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/asistente_drawer_header.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/content_drawer.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/content_drawer2.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/content_drawer_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/content_drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/content_layout.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_gallery.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_slideshow.xml" value="0.18541666666666667" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_main.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer_asistente.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layouts/navBarAsistente/layout/nav_header_drawer2.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/menu/activity_drawer_drawer.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/menu/activity_main_drawer.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/menu/drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/menu/menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3465" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
