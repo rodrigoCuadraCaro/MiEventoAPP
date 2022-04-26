@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".VentanaTickets"
+            android:exported="false" />
+        <activity
+            android:name=".MenuAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".CuentasBloqueadas"
+            android:exported="false" />
+        <activity
             android:name=".EventosGuardadosAsistente"
             android:exported="false" />
         <activity
