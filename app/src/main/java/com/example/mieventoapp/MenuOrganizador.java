@@ -27,7 +27,7 @@ public class MenuOrganizador extends AppCompatActivity {
         bttnGestionEventos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MenuOrganizador.this, EventosOrg.class);
+                Intent i = new Intent(MenuOrganizador.this, GestionarEventosOrg.class);
                 startActivity(i);
                 finish();
             }

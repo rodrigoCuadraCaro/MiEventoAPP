@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".GestionarEventosOrg"
+            android:exported="false" />
+        <activity
             android:name=".CrearCuentaOrg"
             android:exported="false" />
         <activity
             android:name=".ModificarPerfilOrg"
-            android:exported="false" />
-        <activity
-            android:name=".EventosOrg"
             android:exported="false" />
         <activity
             android:name=".MenuOrganizador"
