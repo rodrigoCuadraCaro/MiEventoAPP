@@ -31,7 +31,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.79"
+            android:layout_weight="0.8"
             android:orientation="vertical"
             android:layout_gravity="center">
 
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20sp"
+                android:layout_marginTop="45sp"
                 android:orientation="vertical">
 
                 <EditText
@@ -47,14 +47,12 @@
                     android:layout_width="255dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10sp"
                     android:ems="10"
                     android:hint="Usuario"
                     android:inputType="textPersonName"
-
                     android:padding="10sp" />
 
                 <EditText
@@ -63,7 +61,6 @@
                     android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30sp"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
                     android:drawableStart="@drawable/ic_key"
                     android:drawablePadding="10sp"
@@ -76,17 +73,18 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.1"
                 android:layout_marginTop="100sp"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
 
                 <Button
                     android:id="@+id/bttnLogin"
                     android:layout_width="221sp"
                     android:layout_height="59dp"
                     android:layout_marginBottom="15sp"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_button"
                     android:text="INGRESAR" />
 
@@ -94,7 +92,6 @@
                     android:id="@+id/bttnCrearCuenta"
                     android:layout_width="257dp"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_button"
                     android:text="CREA TU CUENTA" />
 

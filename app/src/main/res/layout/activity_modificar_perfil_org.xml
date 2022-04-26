@@ -1,9 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ModificarPerfilOrg">
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".ModificarPerfilOrg"
+    android:padding="16dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.2">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Modificar Organización"
+                android:textSize="50sp"
+                android:gravity="center">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="0.5"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nombreOrg"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Nombre Organización"
+                android:inputType="textPersonName"
+                android:padding="10sp"
+                tools:ignore="NestedWeights" />
+
+            <EditText
+                android:id="@+id/emailOrg"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:layout_marginTop="30sp"
+                android:padding="10sp" />
+
+            <EditText
+                android:id="@+id/passwordOrg"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_email"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:layout_marginTop="30sp"
+                android:padding="10sp" />
+
+            <EditText
+                android:id="@+id/passwordConfirmOrg"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="30sp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_key"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Confirmar Contraseña"
+                android:inputType="textPassword"
+                android:padding="10sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.3"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bttnModificarPerfilOrg"
+                android:layout_width="250sp"
+                android:layout_height="70sp"
+                android:background="@drawable/button_organizador"
+                android:text="MODIFICAR PERFIL"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+
+            </Button>
+            <Button
+                android:layout_marginTop="18sp"
+                android:id="@+id/bttnVolverOrg"
+                android:layout_width="230sp"
+                android:layout_height="50sp"
+                android:background="@drawable/button_organizador"
+                android:text="VOLVER"
+                android:textColor="@color/white"
+                android:textStyle="bold">
+
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
