@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".ModificarPerfilOrg"
+            android:exported="false" />
+        <activity
+            android:name=".EventosOrg"
+            android:exported="false" />
+        <activity
+            android:name=".MenuOrganizador"
+            android:exported="false" />
+        <activity
             android:name=".VentanaTickets"
             android:exported="false" />
         <activity

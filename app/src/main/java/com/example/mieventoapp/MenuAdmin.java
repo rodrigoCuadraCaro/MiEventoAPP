@@ -20,8 +20,10 @@ public class MenuAdmin extends AppCompatActivity {
         bttnTickets = (Button) findViewById(R.id.bttnTickets);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
 
+        Buttons();
 
     }
+
     private void Buttons(){
         bttnCtaBloq.setOnClickListener(new View.OnClickListener() {
             @Override

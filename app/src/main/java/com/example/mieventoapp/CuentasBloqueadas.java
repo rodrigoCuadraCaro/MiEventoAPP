@@ -17,7 +17,7 @@ public class CuentasBloqueadas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cuentas_bloqueadas);
 
-        bttnVolver = (Button) findViewById(R.id.bttnVolverAsistente);
+        bttnVolver = (Button) findViewById(R.id.bttnVolverAdmin);
         Buttons();
     }
 

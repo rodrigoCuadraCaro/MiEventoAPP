@@ -32,9 +32,21 @@ public class MainActivity extends AppCompatActivity {
         bttnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent i = new Intent(MainActivity.this, MenuAsistente.class);
-                startActivity(i);
-                finish();
+                String email = loginEmail.getText().toString();
+                if(email.equals("Admin")){
+                    Intent i = new Intent(MainActivity.this, MenuAdmin.class);
+                    startActivity(i);
+                    finish();
+                } else if (email.equals("Organizador")){
+                    Intent i = new Intent(MainActivity.this, MenuOrganizador.class);
+                    startActivity(i);
+                    finish();
+                } else {
+                    Intent i = new Intent(MainActivity.this, MenuAsistente.class);
+                    startActivity(i);
+                    finish();
+                }
+
             }
         });
     }
