@@ -37,6 +37,8 @@
 
             <Button
                 android:id="@+id/bttnCtaBloq"
+                android:padding="16sp"
+                android:drawableStart="@drawable/ic_baseline_block_24"
                 android:layout_width="250sp"
                 android:layout_height="60sp"
                 android:background="@drawable/custom_button"
@@ -46,6 +48,8 @@
 
             <Button
                 android:id="@+id/bttnTickets"
+                android:padding="16sp"
+                android:drawableStart="@drawable/ic_baseline_report_problem_24"
                 android:layout_width="250sp"
                 android:layout_height="60sp"
                 android:layout_marginTop="15dp"
@@ -55,9 +59,11 @@
 
             <Button
                 android:id="@+id/bttnCerrarSesion"
+                android:padding="16sp"
+                android:drawableStart="@drawable/ic_baseline_exit_to_app_24"
                 android:background="@drawable/custom_button"
                 android:layout_width="250sp"
-                android:layout_height="45sp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="Salir" />
 
