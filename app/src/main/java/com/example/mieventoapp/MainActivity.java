@@ -12,7 +12,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     private EditText loginEmail, loginPassword;
-    private Button bttnLogin, bttnCrearCuenta;
+    private Button bttnLogin, bttnCrearCuenta, bttnCrearCuentaOrg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
         loginPassword = (EditText) findViewById(R.id.loginPassword);
         bttnLogin = (Button) findViewById(R.id.bttnLogin);
         bttnCrearCuenta = (Button) findViewById(R.id.bttnCrearCuenta);
+        bttnCrearCuentaOrg = (Button) findViewById(R.id.bttnCrearCuentaOrg);
 
-        moveToAccount();
-        moveToRegister();
+        Buttons();
     }
 
-    private void moveToAccount(){
+    private void Buttons(){
         bttnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -48,9 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-    }
 
-    private void moveToRegister(){
         bttnCrearCuenta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -60,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        bttnCrearCuentaOrg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, CrearCuentaOrg.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
+
 }

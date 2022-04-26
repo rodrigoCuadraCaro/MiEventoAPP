@@ -95,6 +95,16 @@
                     android:background="@drawable/custom_button"
                     android:text="CREA TU CUENTA" />
 
+                <Button
+                    android:id="@+id/bttnCrearCuentaOrg"
+                    android:layout_width="257dp"
+                    android:layout_marginTop="15sp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_organizador"
+                    android:textColor="@color/white"
+                    android:padding="8sp"
+                    android:text="SOLICITA TU CUENTA DE ORGANIZADOR" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>

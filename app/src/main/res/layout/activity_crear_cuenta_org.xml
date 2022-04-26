@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CrearCuentaOrg"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Solicitud Organizador"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.79"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="20sp"
+                android:orientation="vertical"
+                android:padding="16sp">
+
+                <EditText
+                    android:id="@+id/registerOrg"
+                    android:layout_width="255dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="10sp"
+                    android:ems="10"
+                    android:hint="Nombre Organización"
+                    android:inputType="textPersonName"
+                    android:padding="10sp" />
+
+                <EditText
+                    android:id="@+id/registerEmailOrg"
+                    android:layout_width="255dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="10sp"
+                    android:ems="10"
+                    android:hint="Correo"
+                    android:inputType="textEmailAddress"
+                    android:layout_marginTop="30sp"
+                    android:padding="10sp" />
+
+                <EditText
+                    android:id="@+id/registerPassword"
+                    android:layout_width="255dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="10sp"
+                    android:ems="10"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    android:layout_marginTop="30sp"
+                    android:padding="10sp" />
+
+                <EditText
+                    android:id="@+id/registerPasswordConfirm"
+                    android:layout_width="255dp"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="30sp"
+                    android:layout_weight="1"
+                    android:background="@drawable/custom_input"
+                    android:drawableStart="@drawable/ic_key"
+                    android:drawablePadding="10sp"
+                    android:ems="10"
+                    android:hint="@string/pass"
+                    android:inputType="textPassword"
+                    android:padding="10sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="261dp"
+                android:layout_marginTop="30sp"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="NestedWeights">
+
+                <Button
+                    android:id="@+id/bttnCrearCuentaOrg"
+                    android:layout_width="257sp"
+                    android:layout_height="60sp"
+                    android:background="@drawable/button_organizador"
+                    android:textColor="@color/white"
+                    android:text="SOLICITAR CUENTA" />
+
+                <Button
+                    android:id="@+id/bttnVolver"
+                    android:layout_width="243dp"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="20sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/button_organizador"
+                    android:text="VOLVER" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
