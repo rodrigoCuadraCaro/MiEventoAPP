@@ -21,7 +21,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_drawer_asistente.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_drawer_menu.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_eventos_guardados_asistente.xml" value="0.3625" />
-        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_feed_asistente.xml" value="0.496513249651325" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_feed_asistente.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_menu_admin.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_menu_asistente.xml" value="0.3625" />
@@ -41,6 +41,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_gallery.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_home.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_slideshow.xml" value="0.18541666666666667" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/lista_eventos.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_asistente.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_main.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_asistente.xml" value="0.3625" />
@@ -56,7 +57,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

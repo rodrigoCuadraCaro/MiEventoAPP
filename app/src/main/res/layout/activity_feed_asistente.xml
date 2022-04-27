@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0sp"
             android:layout_marginBottom="10sp"
-            android:layout_weight="0.12"
+            android:layout_weight="0.03"
             android:orientation="horizontal">
 
             <TextView
@@ -34,95 +34,23 @@
                 android:layout_height="65sp"></Spinner>
 
         </LinearLayout>
-
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="1sp"
-            android:layout_gravity="top"
-            android:layout_weight="0.5">
+            android:layout_height="0sp"
+            android:layout_weight="0.5"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center_horizontal">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listadoEventos"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="290sp"
-                    android:layout_height="190sp"
-                    android:layout_marginTop="5sp"
-                    android:layout_marginBottom="5sp"
-                    android:animateLayoutChanges="true"
-                    cardview:cardCornerRadius="16sp"
-                    cardview:contentPadding="10sp"
-                    cardview:cardElevation="5sp"
-                    >
+            </androidx.recyclerview.widget.RecyclerView>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
+        </LinearLayout>
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="EVENTO RANDOM #1"
-                                    android:textSize="25sp">
-
-                                </TextView>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="[ORGANIZADOR]"
-                                    android:textSize="15sp">
-
-                                </TextView>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="[FECHA]"
-                                    android:textSize="15sp">
-
-                                </TextView>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="68dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:padding="5sp"
-                                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
-                                     elit. Duis luctus velit viverra elit vehicula gravida."></TextView>
-
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-        </ScrollView>
 
         <LinearLayout
             android:layout_width="match_parent"
