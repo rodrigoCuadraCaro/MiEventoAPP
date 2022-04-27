@@ -44,113 +44,24 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="120sp"
+                    android:layout_width="290sp"
+                    android:layout_height="190sp"
+                    android:layout_marginTop="5sp"
                     android:layout_marginBottom="5sp"
-                    cardview:cardBackgroundColor="@color/cardview_shadow_start_color">
+                    android:animateLayoutChanges="true"
+                    cardview:cardCornerRadius="16sp"
+                    cardview:contentPadding="10sp"
+                    cardview:cardElevation="5sp"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="80sp"
-                            android:layout_height="75sp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="TEST">
-
-                            </TextView>
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="vertical">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="EVENTO RANDOM #1"
-                                    android:textSize="25sp">
-
-                                </TextView>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="[ORGANIZADOR]"
-                                    android:textSize="15sp">
-
-                                </TextView>
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:text="[FECHA]"
-                                    android:textSize="15sp">
-
-                                </TextView>
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="68dp">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:padding="5sp"
-                                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
-                                     elit. Duis luctus velit viverra elit vehicula gravida."></TextView>
-
-                            </LinearLayout>
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="120sp"
-                    android:layout_marginBottom="5sp"
-                    cardview:cardBackgroundColor="@color/cardview_shadow_start_color">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="80sp"
-                            android:layout_height="75sp">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="TEST">
-
-                            </TextView>
-
-                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
