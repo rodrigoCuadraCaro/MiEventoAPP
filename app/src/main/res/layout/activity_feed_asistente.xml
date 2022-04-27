@@ -31,7 +31,7 @@
 
             <Spinner
                 android:layout_width="200sp"
-                android:layout_height="65sp"></Spinner>
+                android:layout_height="match_parent"></Spinner>
 
         </LinearLayout>
         <LinearLayout
