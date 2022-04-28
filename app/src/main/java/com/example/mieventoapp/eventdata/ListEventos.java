@@ -1,4 +1,4 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.eventdata;
 
 import androidx.recyclerview.widget.RecyclerView;
 

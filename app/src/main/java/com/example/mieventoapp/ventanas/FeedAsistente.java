@@ -1,4 +1,4 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.ventanas;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.mieventoapp.R;
+import com.example.mieventoapp.eventdata.AdapterEventos;
+import com.example.mieventoapp.eventdata.ListEventos;
 
 import java.util.ArrayList;
 import java.util.List;

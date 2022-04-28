@@ -10,43 +10,43 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
-            android:name=".GestionarEventosOrg"
+            android:name=".ventanas.GestionarEventosOrg"
             android:exported="false" />
         <activity
-            android:name=".CrearCuentaOrg"
+            android:name=".ventanas.CrearCuentaOrg"
             android:exported="false" />
         <activity
-            android:name=".ModificarPerfilOrg"
+            android:name=".ventanas.ModificarPerfilOrg"
             android:exported="false" />
         <activity
-            android:name=".MenuOrganizador"
+            android:name=".ventanas.MenuOrganizador"
             android:exported="false" />
         <activity
-            android:name=".VentanaTickets"
+            android:name=".eventdata.VentanaTickets"
             android:exported="false" />
         <activity
-            android:name=".MenuAdmin"
+            android:name=".ventanas.MenuAdmin"
             android:exported="false" />
         <activity
-            android:name=".CuentasBloqueadas"
+            android:name=".ventanas.CuentasBloqueadas"
             android:exported="false" />
         <activity
-            android:name=".EventosGuardadosAsistente"
+            android:name=".ventanas.EventosGuardadosAsistente"
             android:exported="false" />
         <activity
-            android:name=".ModificarPerfilAsistente"
+            android:name=".ventanas.ModificarPerfilAsistente"
             android:exported="false" />
         <activity
-            android:name=".FeedAsistente"
+            android:name=".ventanas.FeedAsistente"
             android:exported="false" />
         <activity
-            android:name=".MenuAsistente"
+            android:name=".ventanas.MenuAsistente"
             android:exported="false" />
         <activity
-            android:name=".CrearCuenta"
+            android:name=".ventanas.CrearCuenta"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ventanas.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

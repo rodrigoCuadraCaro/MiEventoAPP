@@ -1,4 +1,4 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.eventdata;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mieventoapp.R;
 
 import java.util.List;
 

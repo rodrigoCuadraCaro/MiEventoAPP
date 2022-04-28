@@ -1,13 +1,14 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.ventanas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import com.example.mieventoapp.R;
 
 public class MainActivity extends AppCompatActivity {
 

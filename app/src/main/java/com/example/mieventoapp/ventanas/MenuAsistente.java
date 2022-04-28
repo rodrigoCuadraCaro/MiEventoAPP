@@ -1,4 +1,4 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.ventanas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.mieventoapp.R;
 
 public class MenuAsistente extends AppCompatActivity {
 

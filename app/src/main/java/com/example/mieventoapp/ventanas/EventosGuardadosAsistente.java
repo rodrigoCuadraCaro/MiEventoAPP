@@ -1,4 +1,4 @@
-package com.example.mieventoapp;
+package com.example.mieventoapp.ventanas;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,16 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CrearCuenta extends AppCompatActivity {
+import com.example.mieventoapp.R;
+
+public class EventosGuardadosAsistente extends AppCompatActivity {
 
     private Button bttnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_crear_cuenta);
+        setContentView(R.layout.activity_eventos_guardados_asistente);
 
-        bttnVolver = (Button) findViewById(R.id.bttnVolver);
+        bttnVolver = (Button) findViewById(R.id.bttnVolverAsistente);
+
         buttons();
     }
 
@@ -24,7 +27,7 @@ public class CrearCuenta extends AppCompatActivity {
         bttnVolver.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(CrearCuenta.this, MainActivity.class);
+                Intent i = new Intent(EventosGuardadosAsistente.this, MenuAsistente.class);
                 startActivity(i);
                 finish();
             }
