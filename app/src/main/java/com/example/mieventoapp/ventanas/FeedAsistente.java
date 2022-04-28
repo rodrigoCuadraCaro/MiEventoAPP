@@ -35,7 +35,6 @@ public class FeedAsistente extends AppCompatActivity {
 
     private void buttons(){
         bttnVolverAsistente.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(FeedAsistente.this, MenuAsistente.class);
@@ -55,7 +54,6 @@ public class FeedAsistente extends AppCompatActivity {
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
 
-
         AdapterEventos listEvents = new AdapterEventos(elements, this, new AdapterEventos.OnItemClickListener() {
             @Override
             public void onItemClick(ListEventos item) {
@@ -74,4 +72,5 @@ public class FeedAsistente extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
 }
