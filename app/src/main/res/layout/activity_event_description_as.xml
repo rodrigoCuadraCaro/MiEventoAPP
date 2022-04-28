@@ -1,0 +1,124 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tarjetaEvento"
+    tools:context=".ventanas.EventDescriptionAs"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="15sp"
+    cardview:cardCornerRadius="16sp"
+    app:cardUseCompatPadding="true"
+    cardview:cardElevation="5sp"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="15sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nombreEventoDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="EVENTO RANDOM #1"
+                    android:gravity="center"
+                    android:textSize="40sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_weight="0.08">
+
+                <TextView
+                    android:id="@+id/nombreOrganizadorDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="[ORGANIZADOR]"
+                    android:layout_marginEnd="2sp"
+                    android:textSize="25sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fechaEventoDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="[FECHA]"
+                    android:layout_marginStart="50sp"
+                    android:textSize="25sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="0sp"
+                android:layout_weight="0.55">
+
+                <TextView
+                    android:id="@+id/descEventoDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:padding="15sp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
+                                     elit. Duis luctus velit viverra elit vehicula gravida."
+                    android:textSize="25sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0sp"
+                android:layout_weight="0.35"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_gravity="bottom">
+
+                <Button
+                    android:id="@+id/bttnGuardarFav"
+                    android:layout_width="290sp"
+                    android:layout_height="70sp"
+                    android:background="@drawable/button_menu"
+                    android:text="GUARDAR EN FAVORITOS"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/ic_star"
+                    android:padding="16sp">
+
+                </Button>
+                <Button
+                    android:id="@+id/bttnVolverAsistente"
+                    android:layout_marginTop="18sp"
+                    android:layout_width="228sp"
+                    android:layout_height="60sp"
+                    android:background="@drawable/button_menu"
+                    android:text="Volver"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:padding="16sp">
+
+                </Button>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

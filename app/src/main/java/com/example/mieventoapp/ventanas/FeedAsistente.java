@@ -56,10 +56,22 @@ public class FeedAsistente extends AppCompatActivity {
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
 
 
-        AdapterEventos listEvents = new AdapterEventos(elements, this);
+        AdapterEventos listEvents = new AdapterEventos(elements, this, new AdapterEventos.OnItemClickListener() {
+            @Override
+            public void onItemClick(ListEventos item) {
+                moveToDescription(item);
+            }
+        });
         RecyclerView recyclerView = findViewById(R.id.listadoEventos);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(listEvents);
+    }
+
+    private void moveToDescription(ListEventos item){
+        Intent i = new Intent(this, EventDescriptionAs.class);
+        i.putExtra("ListElement", item);
+        startActivity(i);
+        finish();
     }
 }

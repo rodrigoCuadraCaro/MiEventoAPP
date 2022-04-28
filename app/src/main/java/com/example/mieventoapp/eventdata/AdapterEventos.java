@@ -16,11 +16,17 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.ViewHold
     private List<ListEventos> data;
     private LayoutInflater inflater;
     private Context context;
+    final AdapterEventos.OnItemClickListener listener;
 
-    public AdapterEventos(List<ListEventos> itemList, Context context){
+    public interface OnItemClickListener {
+        void onItemClick(ListEventos item);
+    }
+
+    public AdapterEventos(List<ListEventos> itemList, Context context, AdapterEventos.OnItemClickListener listener) {
         this.data = itemList;
         this.context = context;
         this.inflater = LayoutInflater.from(context);
+        this.listener = listener;
 
     }
 
@@ -56,6 +62,12 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.ViewHold
             orgName.setText(item.getNomOrg());
             evDate.setText(item.getFecha());
             descEvent.setText(item.getDesc());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(item);
+                }
+            });
         }
     }
 }

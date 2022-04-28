@@ -2,7 +2,9 @@ package com.example.mieventoapp.eventdata;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListEventos {
+import java.io.Serializable;
+
+public class ListEventos implements Serializable {
 
     public String name;
     public String nomOrg;
