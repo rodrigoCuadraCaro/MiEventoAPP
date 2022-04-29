@@ -51,19 +51,19 @@ public class MainActivity extends AppCompatActivity {
                 String email = loginEmail.getText().toString();
                 String password = loginPassword.getText().toString();
 
+                if (email.isEmpty() || password.isEmpty()){
+                    AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                    msg.setTitle("Faltan datos");
+                    msg.setMessage("Recuerde ingresar todos los datos!");
+                    msg.show();
+                }
+
                 String url = "https://mieventoappinacap.000webhostapp.com/next/validateUser.php?nombre="+email+"&pass="+password;
-                System.out.println(url);
 
                 client.post(url, new AsyncHttpResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                         if (statusCode == 200){
-                            System.out.println("here");
-                            /*
-                            Intent i = new Intent(MainActivity.this, MenuAdmin.class);
-                            startActivity(i);
-                            finish();
-                             */
                             try {
                                 JSONObject json = new JSONObject(new String(responseBody));
                                 Usuarios u = new Usuarios();
@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
                                     
                                 }
                             } catch (JSONException e) {
+                                AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                                msg.setTitle("Por favor ingrese una cuenta valida");
+                                msg.setMessage("Ingrese datos correctos");
+                                msg.show();
                                 e.printStackTrace();
                             }
 
