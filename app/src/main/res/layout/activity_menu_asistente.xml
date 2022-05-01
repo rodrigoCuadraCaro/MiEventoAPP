@@ -21,6 +21,7 @@
             android:layout_gravity="top">
 
             <TextView
+                android:id="@+id/txtBienvenida"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="BIENVENIDO [NOMBRE]"

@@ -56,92 +56,9 @@ public class MainActivity extends AppCompatActivity {
                     msg.setTitle("Faltan datos");
                     msg.setMessage("Recuerde ingresar todos los datos!");
                     msg.show();
+                } else{
+                    tryLogin(email, password);
                 }
-
-                String url = "https://mieventoappinacap.000webhostapp.com/next/validateUser.php?nombre="+email+"&pass="+password;
-
-                client.post(url, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        if (statusCode == 200){
-                            try {
-                                JSONObject json = new JSONObject(new String(responseBody));
-                                Usuarios u = new Usuarios();
-                                u.setId(json.getInt("id_usu"));
-                                u.setCorreo(json.getString("correo"));
-                                u.setPassword(json.getString("pass"));
-                                u.setName(json.getString("nombre"));
-                                u.setEstado(json.getInt("id_est"));
-                                u.setTipo(json.getInt("id_tip"));
-
-                                if (u.getEstado() == 2){
-                                    AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
-                                    msg.setTitle("Cuenta deshabilitada");
-                                    msg.setMessage("Su cuenta se encuentra bloqueda o no se encuentra disponible" +
-                                            " en este momento. Comuniquese con un administrador para solicitar ayuda");
-                                    msg.show();
-                                } else {
-                                    if (u.getTipo() == 1){
-                                        Intent in = new Intent(MainActivity.this, MenuAdmin.class);
-                                        in.putExtra("user", u);
-                                        startActivity(in);
-                                        finish();
-                                    } else if (u.getTipo() == 2){
-                                        Intent in = new Intent(MainActivity.this, MenuAsistente.class);
-                                        in.putExtra("user", u);
-                                        startActivity(in);
-                                        finish();
-                                    } else if (u.getTipo() == 3){
-                                        Intent in = new Intent(MainActivity.this, MenuOrganizador.class);
-                                        in.putExtra("user", u);
-                                        startActivity(in);
-                                        finish();
-                                    } else {
-                                        AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
-                                        msg.setTitle("Ha ocurrido un error");
-                                        msg.setMessage("Error inesperado, " +
-                                                "si el error persiste comuniquese con soporte");
-                                        msg.show();
-                                    }
-                                    
-                                }
-                            } catch (JSONException e) {
-                                AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
-                                msg.setTitle("Por favor ingrese una cuenta valida");
-                                msg.setMessage("Ingrese datos correctos");
-                                msg.show();
-                                e.printStackTrace();
-                            }
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
-                        msg.setTitle("Error");
-                        msg.setMessage("Error en sistema, porfavor intente nuevamente, " +
-                                "si el error persiste comuniquese con soporte");
-                        msg.show();
-                    }
-                });
-
-                /*
-                if(email.equals("Admin")){
-                    Intent i = new Intent(MainActivity.this, MenuAdmin.class);
-                    startActivity(i);
-                    finish();
-                } else if (email.equals("Organizador")){
-                    Intent i = new Intent(MainActivity.this, MenuOrganizador.class);
-                    startActivity(i);
-                    finish();
-                } else {
-                    Intent i = new Intent(MainActivity.this, MenuAsistente.class);
-                    startActivity(i);
-                    finish();
-                }
-
-                 */
             }
         });
 
@@ -160,6 +77,74 @@ public class MainActivity extends AppCompatActivity {
                 Intent i = new Intent(MainActivity.this, CrearCuentaOrg.class);
                 startActivity(i);
                 finish();
+            }
+        });
+    }
+
+    private void tryLogin(String email, String password){
+        String url = "https://mieventoapp.000webhostapp.com/next/validateUser.php?correo="+email+"&pass="+password;
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if (statusCode == 200){
+                    try {
+                        JSONObject json = new JSONObject(new String(responseBody));
+                        Usuarios u = new Usuarios();
+                        u.setId(json.getInt("id_usu"));
+                        u.setCorreo(json.getString("correo"));
+                        u.setPassword(json.getString("pass"));
+                        u.setName(json.getString("nombre"));
+                        u.setEstado(json.getInt("id_est"));
+                        u.setTipo(json.getInt("id_tip"));
+
+                        if (u.getEstado() == 2){
+                            AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                            msg.setTitle("Cuenta deshabilitada");
+                            msg.setMessage("Su cuenta se encuentra bloqueda o no se encuentra disponible" +
+                                    " en este momento. Comuniquese con un administrador para solicitar ayuda");
+                            msg.show();
+                        } else {
+                            if (u.getTipo() == 1){
+                                Intent in = new Intent(MainActivity.this, MenuAdmin.class);
+                                in.putExtra("user", u);
+                                startActivity(in);
+                                finish();
+                            } else if (u.getTipo() == 2){
+                                Intent in = new Intent(MainActivity.this, MenuAsistente.class);
+                                in.putExtra("user", u);
+                                startActivity(in);
+                                finish();
+                            } else if (u.getTipo() == 3){
+                                Intent in = new Intent(MainActivity.this, MenuOrganizador.class);
+                                in.putExtra("user", u);
+                                startActivity(in);
+                                finish();
+                            } else {
+                                AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                                msg.setTitle("Ha ocurrido un error");
+                                msg.setMessage("Error inesperado, " +
+                                        "si el error persiste comuniquese con soporte");
+                                msg.show();
+                            }
+
+                        }
+                    } catch (JSONException e) {
+                        AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                        msg.setTitle("Por favor ingrese una cuenta valida");
+                        msg.setMessage("Ingrese datos correctos");
+                        msg.show();
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                msg.setTitle("Error");
+                msg.setMessage("Error en sistema, porfavor intente nuevamente, " +
+                        "si el error persiste comuniquese con soporte");
+                msg.show();
             }
         });
     }

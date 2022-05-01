@@ -47,7 +47,7 @@ public class FeedAsistente extends AppCompatActivity {
     private void initList(){
         elements = new ArrayList<>();
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
-        elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
+        elements.add(new ListEventos("FERIA GASTRONOMICA", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
         elements.add(new ListEventos("FERIA ARTESANAL", "MUNICIPALIDAD", "16/07/2022","VEN A LA FERIA ARTESANAL DE LA MUNICIPALIDAD!"));
