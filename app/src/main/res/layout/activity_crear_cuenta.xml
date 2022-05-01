@@ -57,7 +57,7 @@
             android:padding="10sp" />
 
         <EditText
-            android:id="@+id/regiter_email"
+            android:id="@+id/register_email"
             android:layout_width="255dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
