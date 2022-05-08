@@ -6,32 +6,82 @@ import java.io.Serializable;
 
 public class ListEventos implements Serializable {
 
-    public String name;
-    public String nomOrg;
+    public int idEvento;
+    public String nombreEvento;
+    public int idOrganizador;
+    public String nombreOrganizador;
     public String fecha;
-    public String desc;
+    public String ubicacion;
+    public String descripcion;
+    public int idTipo;
+    public String tipoEvento;
 
-    public ListEventos(String name, String nomOrg, String fecha, String desc) {
-        this.name = name;
-        this.nomOrg = nomOrg;
+    public ListEventos() {
+
+    }
+
+    public ListEventos(int idEvento, String nombreEvento, int idOrganizador, String fecha, String ubicacion, String descripcion, int idTipo) {
+        this.idEvento = idEvento;
+        this.nombreEvento = nombreEvento;
+        this.idOrganizador = idOrganizador;
         this.fecha = fecha;
-        this.desc = desc;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+        this.idTipo = idTipo;
     }
 
-    public String getName() {
-        return name;
+    public ListEventos(int idEvento, String nombreEvento, String nombreOrganizador, String fecha, String ubicacion, String descripcion, String tipoEvento) {
+        this.idEvento = idEvento;
+        this.nombreEvento = nombreEvento;
+        this.nombreOrganizador = nombreOrganizador;
+        this.fecha = fecha;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+        this.tipoEvento = tipoEvento;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public ListEventos(int idEvento, String nombreEvento, int idOrganizador, String nombreOrganizador, String fecha, String ubicacion, String descripcion, int idTipo, String tipoEvento) {
+        this.idEvento = idEvento;
+        this.nombreEvento = nombreEvento;
+        this.idOrganizador = idOrganizador;
+        this.nombreOrganizador = nombreOrganizador;
+        this.fecha = fecha;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+        this.idTipo = idTipo;
+        this.tipoEvento = tipoEvento;
     }
 
-    public String getNomOrg() {
-        return nomOrg;
+    public int getIdEvento() {
+        return idEvento;
     }
 
-    public void setNomOrg(String nomOrg) {
-        this.nomOrg = nomOrg;
+    public void setIdEvento(int idEvento) {
+        this.idEvento = idEvento;
+    }
+
+    public String getNombreEvento() {
+        return nombreEvento;
+    }
+
+    public void setNombreEvento(String nombreEvento) {
+        this.nombreEvento = nombreEvento;
+    }
+
+    public int getIdOrganizador() {
+        return idOrganizador;
+    }
+
+    public void setIdOrganizador(int idOrganizador) {
+        this.idOrganizador = idOrganizador;
+    }
+
+    public String getNombreOrganizador() {
+        return nombreOrganizador;
+    }
+
+    public void setNombreOrganizador(String nombreOrganizador) {
+        this.nombreOrganizador = nombreOrganizador;
     }
 
     public String getFecha() {
@@ -42,12 +92,35 @@ public class ListEventos implements Serializable {
         this.fecha = fecha;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getUbicacion() {
+        return ubicacion;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(int idTipo) {
+        this.idTipo = idTipo;
+    }
+
+    public String getTipoEvento() {
+        return tipoEvento;
+    }
+
+    public void setTipoEvento(String tipoEvento) {
+        this.tipoEvento = tipoEvento;
+    }
 }

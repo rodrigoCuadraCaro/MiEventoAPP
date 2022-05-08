@@ -47,21 +47,23 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.ViewHold
     public void setItems(List<ListEventos> items) { data = items;}
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name, orgName, evDate, descEvent;
+        TextView name, orgName, evDate, descEvent, ubicacion;
         
         ViewHolder(View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.nombreEvento);
             orgName = itemView.findViewById(R.id.nombreOrganizador);
             evDate = itemView.findViewById(R.id.fechaEvento);
+            ubicacion = itemView.findViewById(R.id.ubicacionEvento);
             descEvent = itemView.findViewById(R.id.descEvento);
         }
 
         void bindData(final ListEventos item){
-            name.setText(item.getName());
-            orgName.setText(item.getNomOrg());
+            name.setText(item.getNombreEvento());
+            orgName.setText(item.getNombreOrganizador());
             evDate.setText(item.getFecha());
-            descEvent.setText(item.getDesc());
+            descEvent.setText(item.getDescripcion());
+            ubicacion.setText(item.getUbicacion());
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

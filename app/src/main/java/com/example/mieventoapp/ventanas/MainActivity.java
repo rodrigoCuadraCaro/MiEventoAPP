@@ -110,12 +110,13 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(in);
                                 finish();
                             } else if (u.getTipo() == 2){
-                                Intent in = new Intent(MainActivity.this, MenuAsistente.class);
+                                Intent in = new Intent(MainActivity.this, MenuOrganizador.class);
                                 in.putExtra("user", u);
                                 startActivity(in);
                                 finish();
                             } else if (u.getTipo() == 3){
-                                Intent in = new Intent(MainActivity.this, MenuOrganizador.class);
+
+                                Intent in = new Intent(MainActivity.this, MenuAsistente.class);
                                 in.putExtra("user", u);
                                 startActivity(in);
                                 finish();

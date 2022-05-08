@@ -27,10 +27,10 @@ public class EventDescriptionAs extends AppCompatActivity {
         fechaEventoDesc = (TextView) findViewById(R.id.fechaEventoDesc);
         descEventoDesc = (TextView) findViewById(R.id.descEventoDesc);
 
-        nombreEventoDesc.setText(element.getName());
-        nombreOrganizadorDesc.setText(element.getNomOrg());
+        nombreEventoDesc.setText(element.getNombreEvento());
+        nombreOrganizadorDesc.setText(element.getNombreOrganizador());
         fechaEventoDesc.setText(element.getFecha());
-        descEventoDesc.setText(element.getDesc());
+        descEventoDesc.setText(element.getDescripcion());
 
 
         bttnGuardarFav = (Button) findViewById(R.id.bttnGuardarFav);
