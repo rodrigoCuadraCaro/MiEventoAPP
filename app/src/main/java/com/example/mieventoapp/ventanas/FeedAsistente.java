@@ -61,8 +61,8 @@ public class FeedAsistente extends AppCompatActivity {
                     try {
                         JSONArray json = new JSONArray(new String(responseBody));
                         ArrayList<ListEventos> lista = new ArrayList<ListEventos>();
-                        ListEventos ev = new ListEventos();
                         for (int i = 0; i<json.length(); i++){
+                            ListEventos ev = new ListEventos();
                             ev.setIdEvento(json.getJSONObject(i).getInt("id_evento"));
                             ev.setNombreEvento(json.getJSONObject(i).getString("nombreEvento"));
                             ev.setUbicacion(json.getJSONObject(i).getString("ub_evento"));

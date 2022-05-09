@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="0.70"
+            android:layout_weight="0.65"
             android:orientation="vertical">
 
                     <EditText
@@ -66,7 +66,7 @@
                     <EditText
                         android:id="@+id/descripcionEvento"
                         android:layout_width="255dp"
-                        android:layout_height="150sp"
+                        android:layout_height="125sp"
                         android:layout_gravity="center"
                         android:layout_marginTop="30sp"
                         android:background="@drawable/custom_input"
@@ -87,7 +87,7 @@
                         android:drawableStart="@drawable/ic_baseline_calendar_month_24"
                         android:drawablePadding="10sp"
                         android:ems="10"
-                        android:hint="Fecha"
+                        android:hint="Fecha DD/MM/AAAA"
                         android:inputType="textPassword"
                         android:padding="10sp" />
 
@@ -103,7 +103,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0sp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.21"
                 android:layout_marginTop="0sp"
                 android:gravity="center"
                 android:orientation="vertical">
