@@ -1,37 +1,129 @@
 package com.example.mieventoapp.ventanas;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
+import com.example.mieventoapp.eventdata.AdapterEventos;
+import com.example.mieventoapp.eventdata.AdapterOrganizador;
+import com.example.mieventoapp.eventdata.ListEventos;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import cz.msebera.android.httpclient.Header;
 
 public class GestionarEventosOrg extends AppCompatActivity {
+    List<ListEventos> elements;
+    private AsyncHttpClient client;
 
     private Button bttnVolver;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestionar_eventos_org);
 
-        bttnVolver = (Button) findViewById(R.id.bttnVolver);
+        client = new AsyncHttpClient();
+        bttnVolver = (Button) findViewById(R.id.bttnVolverOrg);
+        Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
+        System.out.println(u.getId());
 
-        Buttons();
+        Buttons(u);
+        initList(u);
     }
 
-    private void Buttons(){
+    private void initList(Usuarios u){
+        String url = "https://mieventoapp.000webhostapp.com/next/listarEventosOrg.php?idOrg="+u.getId();
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if (statusCode == 200){
+                    try {
+                        JSONArray json = new JSONArray(new String(responseBody));
+                        ArrayList<ListEventos> lista = new ArrayList<ListEventos>();
+                        ListEventos ev = new ListEventos();
+                        for (int i = 0; i<json.length(); i++){
+                            System.out.println("here!");
+                            ev.setIdEvento(json.getJSONObject(i).getInt("id_evento"));
+                            ev.setNombreEvento(json.getJSONObject(i).getString("nombreEvento"));
+                            ev.setUbicacion(json.getJSONObject(i).getString("ub_evento"));
+                            ev.setDescripcion(json.getJSONObject(i).getString("desc_evento"));
+                            ev.setFecha(json.getJSONObject(i).getString("fecha_evento"));
+                            ev.setIdOrganizador(json.getJSONObject(i).getInt("id_usuario"));
+                            ev.setIdTipo(json.getJSONObject(i).getInt("id_tipoevt"));
+                            ev.setTipoEvento(json.getJSONObject(i).getString("nombreTipoEvt"));
+                            lista.add(ev);
+                        }
+
+                        elements = new ArrayList<>();
+                        for (int i = 0; i < lista.size(); i++){
+                            ListEventos l = new ListEventos();
+                            l = lista.get(i);
+                            elements.add
+                                    (new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getIdOrganizador(), l.getNombreOrganizador(),
+                                            l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getIdTipo(), l.getTipoEvento()));
+                        }
+
+                        AdapterOrganizador listEvents = new AdapterOrganizador(elements, GestionarEventosOrg.this, new AdapterOrganizador.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(ListEventos item) {
+                                moveToDescription(item);
+                            }
+                        });
+                        RecyclerView recyclerView = findViewById(R.id.listadoEventosOrg);
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(GestionarEventosOrg.this));
+                        recyclerView.setAdapter(listEvents);
+                    }
+                    catch (Exception e){
+                        AlertDialog.Builder msg = new AlertDialog.Builder(GestionarEventosOrg.this);
+                        msg.setTitle("Error al listar!");
+                        msg.setMessage("Hubo un error al listar intente nuevamente");
+                        msg.show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                AlertDialog.Builder msg = new AlertDialog.Builder(GestionarEventosOrg.this);
+                msg.setTitle("Error al listar!");
+                msg.setMessage("Hubo un error al listar intente nuevamente");
+                msg.show();
+            }
+        });
+    }
+
+    private void Buttons(Usuarios u){
         bttnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent (GestionarEventosOrg.this, MenuOrganizador.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
         });
     }
+
+    private void moveToDescription(ListEventos item){
+        Intent i = new Intent(GestionarEventosOrg.this, EventDescriptionOrg.class);
+        i.putExtra("ListElement", item);
+        startActivity(i);
+        finish();
+    }
 }
+

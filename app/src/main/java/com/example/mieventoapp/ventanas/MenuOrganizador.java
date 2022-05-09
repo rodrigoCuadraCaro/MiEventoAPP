@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 
 public class MenuOrganizador extends AppCompatActivity {
@@ -21,15 +22,17 @@ public class MenuOrganizador extends AppCompatActivity {
         bttnGestionEventos = (Button) findViewById(R.id.bttnGestionarEventos);
         bttnModificarPerfilAdmin = (Button) findViewById(R.id.bttnModificarPerfilAdmin);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
+        Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
-        Buttons();
+        Buttons(u);
     }
 
-    private void Buttons(){
+    private void Buttons(Usuarios u){
         bttnGestionEventos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuOrganizador.this, GestionarEventosOrg.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
@@ -39,6 +42,7 @@ public class MenuOrganizador extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuOrganizador.this, ModificarPerfilOrg.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }

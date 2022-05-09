@@ -1,0 +1,82 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tarjetaEventoOrg"
+    android:layout_width="match_parent"
+    android:layout_height="190sp"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="15sp"
+    cardview:cardCornerRadius="16sp"
+    app:cardUseCompatPadding="true"
+    cardview:cardElevation="5sp"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:padding="15sp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nombreEventoOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="EVENTO RANDOM #1"
+                    android:textSize="25sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/ubicacionEventoOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="[UBICACION]"
+                    android:layout_marginEnd="20sp"
+                    android:textSize="15sp">
+
+                </TextView>
+
+                <TextView
+                    android:id="@+id/fechaEventoOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="[FECHA]"
+                    android:textSize="15sp">
+
+                </TextView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="68dp">
+
+                <TextView
+                    android:id="@+id/descEventoOrg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5sp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
+                                     elit. Duis luctus velit viverra elit vehicula gravida."></TextView>
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
