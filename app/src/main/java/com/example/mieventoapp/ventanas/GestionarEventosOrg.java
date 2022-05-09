@@ -29,7 +29,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
     List<ListEventos> elements;
     private AsyncHttpClient client;
 
-    private Button bttnVolver;
+    private Button bttnVolver, bttnAgregarEvento;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +38,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
 
         client = new AsyncHttpClient();
         bttnVolver = (Button) findViewById(R.id.bttnVolverOrg);
+        bttnAgregarEvento = (Button) findViewById(R.id.bttnAgregarEvento);
+
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
         System.out.println(u.getId());
 
@@ -112,6 +114,16 @@ public class GestionarEventosOrg extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent (GestionarEventosOrg.this, MenuOrganizador.class);
+                i.putExtra("user", u);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        bttnAgregarEvento.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent (GestionarEventosOrg.this, AgregarEvento.class);
                 i.putExtra("user", u);
                 startActivity(i);
                 finish();
