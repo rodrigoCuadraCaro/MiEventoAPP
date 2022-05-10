@@ -15,11 +15,16 @@ import android.widget.Toast;
 import com.example.mieventoapp.Clases.TipoEvento;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
+import com.example.mieventoapp.eventdata.ListEventos;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -27,17 +32,23 @@ import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
-public class AgregarEvento extends AppCompatActivity {
+public class ModificarEvento extends AppCompatActivity {
     private AsyncHttpClient client;
     private Spinner spinner;
     private EditText nombreEvento, ubicacionEvento, descripcionEvento, fechaEvento;
-    private Button bttnRegistrarEvento, bttnVolver;
+    private Button bttnModificarEvento, bttnVolver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_agregar_evento);
+        setContentView(R.layout.activity_modificar_evento);
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
+        ListEventos ev = (ListEventos)getIntent().getSerializableExtra("evento");
+
+        System.out.println("--- ID EVENTO ---");
+        System.out.println(ev.getIdEvento());
+        System.out.println("--- ID EVENTO ---");
+
         client = new AsyncHttpClient();
 
         spinner = (Spinner)findViewById(R.id.spinnerTipoEvento);
@@ -45,40 +56,41 @@ public class AgregarEvento extends AppCompatActivity {
         ubicacionEvento = (EditText)findViewById(R.id.ubicacionEventoadd);
         descripcionEvento = (EditText)findViewById(R.id.descripcionEventoadd);
         fechaEvento = (EditText)findViewById(R.id.fechaEventoadd);
-        bttnRegistrarEvento = (Button) findViewById(R.id.bttnRegistrarEvento);
+
+        bttnModificarEvento = (Button) findViewById(R.id.bttnModificarEvento);
         bttnVolver = (Button) findViewById(R.id.bttnVolver);
 
         initSpinner();
-        Buttons(u);
+        initEvento(u, ev);
+        Buttons(u, ev);
     }
 
-    private void Buttons(Usuarios u){
-        bttnRegistrarEvento.setOnClickListener(new View.OnClickListener(){
+    private void Buttons(Usuarios u, ListEventos ev){
+        bttnModificarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 String nombre = nombreEvento.getText().toString().replaceAll(" ", "%20");
-                String ubicacion = ubicacionEvento.getText().toString().replaceAll(" ", "%20");
                 String descripcion = descripcionEvento.getText().toString().replaceAll(" ", "%20");
-                String fecha = fechaEvento.getText().toString();
+                String ubicacion = ubicacionEvento.getText().toString().replaceAll(" ", "%20");
+                String fecha = fechaEvento.getText().toString().trim();
                 TipoEvento tip = (TipoEvento) spinner.getSelectedItem();
                 String tipo = Integer.toString(tip.getId());
+                String idEv = Integer.toString(ev.getIdEvento());
 
                 String check = checkEmpty(nombre, ubicacion, descripcion, fecha, tipo);
 
                 if (check.equals("")){
-
-                     check = validateString(nombre, ubicacion, descripcion, fecha, tipo);
-
-                     if (check.equals("")){
-                         insertEvento(nombre,u,ubicacion,descripcion,fecha, tipo);
-                     } else{
-                         AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
-                         alert.setTitle("Error en ingreso");
-                         alert.setMessage(check);
-                         alert.show();
-                     }
+                    check = validateString(nombre, ubicacion, descripcion, fecha, tipo);
+                    if (check.equals("")){
+                        updateEvento(nombre,u,ubicacion,descripcion,fecha, tipo, idEv);
+                    } else{
+                        AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
+                        alert.setTitle("Error en ingreso");
+                        alert.setMessage(check);
+                        alert.show();
+                    }
                 } else{
-                    AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                     alert.setTitle("Error en ingreso");
                     alert.setMessage(check);
                     alert.show();
@@ -89,35 +101,45 @@ public class AgregarEvento extends AppCompatActivity {
         bttnVolver.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(AgregarEvento.this, GestionarEventosOrg.class);
-                in.putExtra("user", u);
-                startActivity(in);
+                Intent i = new Intent(ModificarEvento.this, GestionarEventosOrg.class);
+                i.putExtra("user", u);
+                startActivity(i);
                 finish();
             }
         });
     }
 
-    private void insertEvento(String nombre, Usuarios u, String ubicacion, String descripcion, String fecha, String tipo){
-        String url = "https://mieventoapp.000webhostapp.com/next/agregarEvento.php?nombre="+nombre+
-                "&iduser="+u.getId()+"&ubicacion="+ubicacion+"&descripcion="+descripcion+"&fecha="+fecha+"&tipo="+tipo;
+    private void updateEvento(String nombre, Usuarios u, String ubicacion, String descripcion, String fecha, String tipo, String idEvento){
+        String url = "https://mieventoapp.000webhostapp.com/next/modificarEvento.php?nombre="+nombre+
+                "&iduser="+u.getId()+"&idEvento="+idEvento+"&ubicacion="+ubicacion+"&descripcion="
+                +descripcion+"&fecha="+fecha+"&tipo="+tipo;
+        System.out.println(url);
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 try {
                     if (statusCode == 200){
                         String rs = new String (responseBody);
-                        if (rs.equals("1")){
-                            Toast.makeText(AgregarEvento.this,
-                                    "Evento creado con exito!", Toast.LENGTH_LONG).show();
+                        System.out.println(rs);
+                            if (rs.equals("1")){
+                                Toast.makeText(ModificarEvento.this,
+                                        "Evento modificado con exito!", Toast.LENGTH_LONG).show();
 
-                            Intent i = new Intent(AgregarEvento.this, GestionarEventosOrg.class);
-                            i.putExtra("user", u);
-                            startActivity(i);
-                            finish();
+                                Intent i = new Intent(ModificarEvento.this, GestionarEventosOrg.class);
+                                i.putExtra("user", u);
+                                startActivity(i);
+                                finish();
+                            } else {
+                                System.out.println(rs);
+                            }
+                        } else {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
+                            alert.setTitle("Error");
+                            alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                            alert.show();
                         }
-                    }
                 }catch(Exception e){
-                    AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                     alert.setTitle("Error");
                     alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
                     alert.show();
@@ -126,7 +148,49 @@ public class AgregarEvento extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
+                AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
+                alert.setTitle("Error fatal");
+                alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                alert.show();
+            }
+        });
+    }
+
+    private void initEvento(Usuarios u, ListEventos e){
+        String url = "https://mieventoapp.000webhostapp.com/next/getEvento.php?idOrg="+u.getId()+"&idEvento="+e.getIdEvento();
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if (statusCode == 200){
+                    try {
+                        JSONArray json = new JSONArray(new String(responseBody));
+                        ListEventos ev = new ListEventos();
+                        for (int i = 0; i < json.length(); i++){
+                            ev.setIdEvento(json.getJSONObject(i).getInt("id_evento"));
+                            ev.setNombreEvento(json.getJSONObject(i).getString("nombreEvento"));
+                            ev.setUbicacion(json.getJSONObject(i).getString("ub_evento"));
+                            ev.setDescripcion(json.getJSONObject(i).getString("desc_evento"));
+                            ev.setFecha(json.getJSONObject(i).getString("fecha_evento"));
+                            ev.setIdOrganizador(json.getJSONObject(i).getInt("id_usuario"));
+                            ev.setIdTipo(json.getJSONObject(i).getInt("id_tipoevt"));
+                            setTextEvent(ev);
+                        }
+
+                    }catch(Exception e){
+                        System.out.println("catch!");
+                        System.out.println(e.getMessage());
+                        AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
+                        alert.setTitle("Error fatal");
+                        alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                        alert.show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                System.out.println("on failure!");
+                AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
                 alert.show();
@@ -154,13 +218,13 @@ public class AgregarEvento extends AppCompatActivity {
                             TipoEvento tip = lista.get(i);
                         }
 
-                        ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<>(AgregarEvento.this,
+                        ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<>(ModificarEvento.this,
                                 android.R.layout.simple_spinner_item, lista);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                         spinner.setAdapter(adapter);
 
                     } catch (Exception e){
-                        AlertDialog.Builder msg = new AlertDialog.Builder(AgregarEvento.this);
+                        AlertDialog.Builder msg = new AlertDialog.Builder(ModificarEvento.this);
                         msg.setTitle("Error en tipo eventos");
                         msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
                         msg.show();
@@ -170,12 +234,20 @@ public class AgregarEvento extends AppCompatActivity {
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                AlertDialog.Builder msg = new AlertDialog.Builder(AgregarEvento.this);
+                AlertDialog.Builder msg = new AlertDialog.Builder(ModificarEvento.this);
                 msg.setTitle("Error en tipo eventos");
                 msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
                 msg.show();
             }
         });
+    }
+
+    private void setTextEvent(ListEventos ev){
+        spinner.setSelection(ev.getIdTipo());
+        nombreEvento.setText(ev.getNombreEvento());
+        ubicacionEvento.setText(ev.getUbicacion());
+        descripcionEvento.setText(ev.getDescripcion());
+        fechaEvento.setText(ev.getFecha());
     }
 
     private String checkEmpty(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
@@ -237,4 +309,5 @@ public class AgregarEvento extends AppCompatActivity {
         Matcher matcher = dateCheck.matcher(fecha);
         return matcher.find();
     }
+
 }

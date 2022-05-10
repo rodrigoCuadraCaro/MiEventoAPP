@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".ventanas.ModificarEvento"
+            android:exported="false" />
+        <activity
             android:name=".ventanas.AgregarEvento"
             android:exported="false" />
         <activity

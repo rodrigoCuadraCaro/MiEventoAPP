@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ventanas.ModificarEvento"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Modificar Evento"
+                android:textSize="40sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.7"
+            android:layout_marginBottom="20sp"
+            android:layout_marginTop="20sp"
+            android:padding="20sp"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/nombreEventoadd"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_star"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Nombre Evento"
+                android:inputType="textPersonName"
+                android:padding="10sp" />
+            <EditText
+                android:id="@+id/ubicacionEventoadd"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_baseline_location_on_24"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Ubicación"
+                android:inputType="textEmailAddress"
+                android:padding="10sp" />
+            <EditText
+                android:id="@+id/descripcionEventoadd"
+                android:layout_width="255dp"
+                android:layout_height="125sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_baseline_edit_24"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Descripción"
+                android:inputType="textMultiLine"
+                android:padding="10sp" />
+            <EditText
+                android:id="@+id/fechaEventoadd"
+                android:layout_width="255dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/custom_input"
+                android:drawableStart="@drawable/ic_baseline_calendar_month_24"
+                android:drawablePadding="10sp"
+                android:ems="10"
+                android:hint="Fecha DD/MM/AAAA"
+                android:inputType="text"
+                android:padding="10sp" />
+            <Spinner
+                android:id="@+id/spinnerTipoEvento"
+                android:layout_width="230sp"
+                android:layout_height="50sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_marginTop="1sp"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bttnModificarEvento"
+                android:layout_width="257sp"
+                android:layout_height="60sp"
+                android:background="@drawable/button_organizador"
+                android:text="GUARDAR CAMBIOS"
+                android:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/bttnVolver"
+                android:layout_width="243dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="20sp"
+                android:background="@drawable/button_organizador"
+                android:text="VOLVER"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
