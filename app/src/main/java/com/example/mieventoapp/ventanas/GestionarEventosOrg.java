@@ -80,7 +80,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
                         AdapterOrganizador listEvents = new AdapterOrganizador(elements, GestionarEventosOrg.this, new AdapterOrganizador.OnItemClickListener() {
                             @Override
                             public void onItemClick(ListEventos item) {
-                                moveToDescription(item);
+                                moveToDescription(item, u);
                             }
                         });
                         RecyclerView recyclerView = findViewById(R.id.listadoEventosOrg);
@@ -129,9 +129,10 @@ public class GestionarEventosOrg extends AppCompatActivity {
         });
     }
 
-    private void moveToDescription(ListEventos item){
+    private void moveToDescription(ListEventos item, Usuarios u){
         Intent i = new Intent(GestionarEventosOrg.this, EventDescriptionOrg.class);
         i.putExtra("ListElement", item);
+        i.putExtra("user", u);
         startActivity(i);
         finish();
     }

@@ -16,14 +16,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:weightSum="1"
+        android:orientation="vertical"
         android:padding="15sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,7 +46,8 @@
                 android:layout_height="0sp"
                 android:orientation="horizontal"
                 android:gravity="center"
-                android:layout_weight="0.1">
+                android:layout_weight="0.07"
+                android:layout_marginBottom="15sp">
 
                 <TextView
                     android:id="@+id/ubicacionEvento"
@@ -77,7 +78,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="0sp"
-                android:layout_weight="0.55">
+                android:layout_weight="0.3"
+                android:layout_marginBottom="15sp">
 
                 <TextView
                     android:id="@+id/descEventoDesc"
@@ -89,24 +91,24 @@
                     android:textSize="25sp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:layout_weight="0.35"
-                android:orientation="vertical"
+                android:layout_height="223dp"
+                android:layout_weight="0.01"
                 android:gravity="center"
-                android:layout_gravity="bottom">
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/bttnModificarEvento"
                     android:layout_width="290sp"
                     android:layout_height="70sp"
                     android:background="@drawable/button_organizador"
-                    android:text="MODIFICAR EVENTO"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
                     android:drawableStart="@drawable/ic_baseline_edit_24"
-                    android:padding="16sp">
+                    android:padding="16sp"
+                    android:text="MODIFICAR EVENTO"
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
 
                 </Button>
 
@@ -116,24 +118,24 @@
                     android:layout_height="70sp"
                     android:layout_marginTop="18sp"
                     android:background="@drawable/button_organizador"
-                    android:text="ELIMINAR EVENTO"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
                     android:drawableStart="@drawable/ic_baseline_block_24"
-                    android:padding="16sp">
+                    android:padding="16sp"
+                    android:text="ELIMINAR EVENTO"
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
 
                 </Button>
 
                 <Button
                     android:id="@+id/bttnVolverOrg"
-                    android:layout_marginTop="18sp"
                     android:layout_width="228sp"
                     android:layout_height="60sp"
+                    android:layout_marginTop="18sp"
                     android:background="@drawable/button_organizador"
+                    android:padding="16sp"
                     android:text="Volver"
-                    android:textSize="18sp"
                     android:textColor="@color/white"
-                    android:padding="16sp">
+                    android:textSize="18sp">
 
                 </Button>
 

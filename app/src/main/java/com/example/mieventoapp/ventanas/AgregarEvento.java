@@ -22,6 +22,8 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -54,71 +56,31 @@ public class AgregarEvento extends AppCompatActivity {
         bttnRegistrarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String nombre = "";
+                String nombre = nombreEvento.getText().toString();
                 String ubicacion = ubicacionEvento.getText().toString();
                 String descripcion = descripcionEvento.getText().toString();
                 String fecha = fechaEvento.getText().toString();
                 TipoEvento tip = (TipoEvento) spinner.getSelectedItem();
                 String tipo = Integer.toString(tip.getId());
 
-                System.out.println(nombre);
-                System.out.println(ubicacion);
-                System.out.println(descripcion);
-                System.out.println(fecha);
-                System.out.println(tipo);
+                String check = checkEmpty(nombre, ubicacion, descripcion, fecha, tipo);
 
+                if (check.equals("")){
 
-                String msg="";
+                     check = validateString(nombre, ubicacion, descripcion, fecha, tipo);
 
-                if (nombreEvento.getText().toString().trim().isEmpty()){
-                    msg+="Recuerde ingresar el nombre del evento\n";
-                } else if (nombreEvento.getText().toString().trim().length() > 50) {
-                    msg+="El nombre no debe superar los 50 caracteres\n";
-                } else {
-                    nombre = nombreEvento.getText().toString();
-                }
-
-                if (ubicacion.isEmpty()){
-                    msg+="Recuerde ingresar una ubicación\n";
-                }
-
-                if (descripcion.isEmpty()){
-                    msg+="Recuerde escribir una descripción\n";
-                }
-
-                if(fecha.isEmpty()){
-                    msg+="Recuerde ingresar una fecha (DD/MM/AAAA)\n";
-                }
-
-                if(tipo.isEmpty() || tipo.equals("0")){
-                    msg+="Recuerde seleccionar un tipo de evento\n";
-                }
-
-                if (nombre.length() < 50 ){
-                }
-
-                if (ubicacion.length() > 50){
-                    msg+="Recuerde ingresar una ubicación\n";
-                }
-
-                if (descripcion.length() > 150){
-                    msg+="Recuerde escribir una descripción\n";
-                }
-
-                if(fecha.length() > 15){
-                    msg+="Recuerde ingresar una fecha (DD/MM/AAAA)\n";
-                }
-
-                if(tipo.length() <= 0){
-                    msg+="Recuerde seleccionar un tipo de evento\n";
-                }
-
-                if (msg.equals("")){
-                        insertEvento(nombre,u,ubicacion,descripcion,fecha, tipo);
-                } else {
+                     if (check.equals("")){
+                         insertEvento(nombre,u,ubicacion,descripcion,fecha, tipo);
+                     } else{
+                         AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
+                         alert.setTitle("Error en ingreso");
+                         alert.setMessage(check);
+                         alert.show();
+                     }
+                } else{
                     AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
                     alert.setTitle("Error en ingreso");
-                    alert.setMessage(msg);
+                    alert.setMessage(check);
                     alert.show();
                 }
             }
@@ -214,5 +176,65 @@ public class AgregarEvento extends AppCompatActivity {
                 msg.show();
             }
         });
+    }
+
+    private String checkEmpty(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
+        String msg = "";
+        if (nombre.isEmpty()){
+            msg+="Recuerde ingresar un nombre\n";
+        }
+        if (ubicacion.isEmpty()){
+            msg+="Recuerde ingresar una ubicación\n";
+        }
+
+        if (descripcion.isEmpty()){
+            msg+="Recuerde escribir una descripción\n";
+        }
+
+        if(fecha.isEmpty()){
+            msg+="Recuerde ingresar una fecha (DD/MM/AAAA)\n";
+        }
+
+        if(tipo.isEmpty() || tipo.equals("0")){
+            msg+="Recuerde seleccionar un tipo de evento\n";
+        }
+
+        return msg;
+    }
+
+    private String validateString(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
+        String msg = "";
+
+        if (nombre.length() > 50 ){
+            msg+="El nombre no debe superar los 50 caracteres\n";
+        }
+
+        if (ubicacion.length() > 50){
+            msg+="Recuerde ingresar una ubicación\n";
+        }
+
+        if (descripcion.length() > 150){
+            msg+="Recuerde escribir una descripción\n";
+        }
+
+        if(fecha.length() > 15 || !validateDate(fecha)){
+            msg+="Recuerde ingresar una fecha correcta (DD/MM/AAAA)\n";
+        }
+
+        if(tipo.length() <= 0){
+            msg+="Recuerde seleccionar un tipo de evento\n";
+        }
+        return msg;
+    }
+
+    private boolean validateDate(String fecha){
+        Pattern dateCheck =  Pattern.compile("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1" +
+                "|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})"+
+                "$|^(?:29(\\/|-|\\.)0?2\\3(?:(?:(?:1[6-9]|[2-9]\\d)?(?:0[48]|[2468][048]|[13579][26])" +
+                "|(?:(?:16|[2468][048]|[3579][26])00))))" +
+                "$|^(?:0?[1-9]|1\\d|2[0-8])(\\/|-|\\.)(?:(?:0?[1-9])" +
+                "|(?:1[0-2]))\\4(?:(?:1[6-9]|[2-9]\\d)?\\d{2})$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = dateCheck.matcher(fecha);
+        return matcher.find();
     }
 }
