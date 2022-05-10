@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(in);
                                 finish();
                             } else if (u.getTipo() == 3){
-
                                 Intent in = new Intent(MainActivity.this, MenuAsistente.class);
                                 in.putExtra("user", u);
                                 startActivity(in);
