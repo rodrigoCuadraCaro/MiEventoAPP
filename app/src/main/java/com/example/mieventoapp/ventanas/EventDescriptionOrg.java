@@ -94,7 +94,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
                                         String rs = new String (responseBody);
                                         if (rs.equals("1")){
                                             Toast.makeText(EventDescriptionOrg.this,
-                                                    "Evento creado con exito!", Toast.LENGTH_LONG).show();
+                                                    "Evento eliminado con exito!", Toast.LENGTH_LONG).show();
 
                                             Intent in = new Intent(EventDescriptionOrg.this, GestionarEventosOrg.class);
                                             in.putExtra("user", u);
