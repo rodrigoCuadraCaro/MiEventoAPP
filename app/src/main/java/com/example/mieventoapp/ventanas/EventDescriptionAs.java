@@ -42,6 +42,13 @@ public class EventDescriptionAs extends AppCompatActivity {
     }
 
     private void Buttons(){
+        bttnGuardarFav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         bttnVolverAsistente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
