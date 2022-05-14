@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v){
 
-                String email = loginEmail.getText().toString();
-                String password = loginPassword.getText().toString();
+                String email = loginEmail.getText().toString().trim().replaceAll(" ", "%20");
+                String password = loginPassword.getText().toString().trim().replaceAll(" ", "%20");
 
                 if (email.isEmpty() || password.isEmpty()){
                     AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                         u.setName(json.getString("nombre"));
                         u.setEstado(json.getInt("id_est"));
                         u.setTipo(json.getInt("id_tip"));
+
                         if (u.getEstado() == 2){
                             AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
                             msg.setTitle("Cuenta deshabilitada");

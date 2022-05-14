@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -24,6 +25,7 @@ public class CrearCuenta extends AppCompatActivity {
     private Button bttnVolver, bttnRegistrar;
     private EditText registerUsername, registerEmail, registerPassword, registerPasswordConfirm;
     private AsyncHttpClient client;
+    private LoadingScreen loadingScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class CrearCuenta extends AppCompatActivity {
         registerPasswordConfirm = (EditText) findViewById(R.id.register_confirmPassword);
 
         client = new AsyncHttpClient();
-
+        loadingScreen = new LoadingScreen(CrearCuenta.this);
 
         buttons();
     }
@@ -48,17 +50,39 @@ public class CrearCuenta extends AppCompatActivity {
         bttnRegistrar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                String name = registerUsername.getText().toString().trim();
-                String mail = registerEmail.getText().toString().trim();
-                String pass = registerPassword.getText().toString().trim();
-                String passconf = registerPasswordConfirm.getText().toString().trim();
+                loadingScreen.startAnimation();
+                String name = registerUsername.getText().toString().trim().replaceAll(" ", "%20");
+                String mail = registerEmail.getText().toString().trim().replaceAll(" ", "%20");
+                String pass = registerPassword.getText().toString().trim().replaceAll(" ", "%20");
+                String passconf = registerPasswordConfirm.getText().toString().trim().replaceAll(" ", "%20");
 
-                if (pass.equals(passconf) && stringCheck(name,mail,pass)){
-                    tryRegister(name,mail,pass);
+                String checkEmpty = checkEmpty(name, mail, pass);
+
+                if (checkEmpty.equals("")){
+                    String check = stringCheck(name,mail, pass);
+                    if (check.equals("")){
+
+                        if (pass.equals(passconf)){
+                            tryRegister(name,mail,pass);
+                        } else{
+                            AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
+                            alert.setTitle("Error en datos");
+                            alert.setMessage("Las contraseñas no coinciden");
+                            loadingScreen.stopAnimation();
+                            alert.show();
+                        }
+                    } else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
+                        alert.setTitle("Error en datos");
+                        alert.setMessage(check);
+                        loadingScreen.stopAnimation();
+                        alert.show();
+                    }
                 } else {
                     AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
-                    alert.setTitle("Error");
-                    alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                    alert.setTitle("Error en datos");
+                    alert.setMessage(checkEmpty);
+                    loadingScreen.stopAnimation();
                     alert.show();
                 }
             }
@@ -76,7 +100,7 @@ public class CrearCuenta extends AppCompatActivity {
 
     private void tryRegister(String name, String mail, String pass){
         String url = "https://mieventoapp.000webhostapp.com/next/registrarAsistente.php?correo="+mail+
-                "&nombre="+name+"&pass="+pass+"&estado=1&tipo=2";
+                "&nombre="+name+"&pass="+pass+"&estado=1&tipo=3";
 
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -89,6 +113,7 @@ public class CrearCuenta extends AppCompatActivity {
                                     "Cuenta creada con exito!", Toast.LENGTH_LONG).show();
 
                             Intent i = new Intent(CrearCuenta.this, MainActivity.class);
+                            loadingScreen.stopAnimation();
                             startActivity(i);
                             finish();
                         }
@@ -97,6 +122,7 @@ public class CrearCuenta extends AppCompatActivity {
                     AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
                     alert.setTitle("Error");
                     alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                    loadingScreen.stopAnimation();
                     alert.show();
                 }
             }
@@ -106,12 +132,13 @@ public class CrearCuenta extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
                 alert.show();
             }
         });
     }
 
-    private boolean stringCheck(String name,String mail,String pass){
+    private String stringCheck(String name,String mail,String pass){
         String msg = "";
 
         if (mail.length() > 30){
@@ -124,21 +151,29 @@ public class CrearCuenta extends AppCompatActivity {
             msg += "La contraseña no debe superar los 20 caracteres\n";
         }
 
-        if (!msg.equals("")){
-            AlertDialog.Builder alert = new AlertDialog.Builder(this);
-            alert.setTitle("Error");
-            alert.setMessage(msg);
-            alert.show();
-            return false;
-        } else {
-            return true;
-        }
+        return msg;
     }
 
     private boolean validateMail(String email){
         Pattern emailCheck =  Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = emailCheck.matcher(email);
         return matcher.find();
+    }
+
+    private String checkEmpty(String name, String mail, String pass){
+        String msg = "";
+        if (name.isEmpty()){
+            msg+="Recuerde ingresar un nombre\n";
+        }
+        if (mail.isEmpty()){
+            msg+="Recuerde ingresar un correo\n";
+        }
+
+        if (pass.isEmpty()){
+            msg+="Recuerde escribir una contraseña\n";
+        }
+
+        return msg;
     }
 
 }

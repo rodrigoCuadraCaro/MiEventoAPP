@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.2"
+            android:layout_weight="0.1"
             android:orientation="horizontal">
 
             <TextView
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="0.79"
+            android:layout_weight="0.68"
             android:orientation="vertical">
 
             <LinearLayout
@@ -44,13 +44,12 @@
                 android:padding="16sp">
 
                 <EditText
-                    android:id="@+id/registerOrg"
+                    android:id="@+id/register_username"
                     android:layout_width="255dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
-                    android:drawableStart="@drawable/ic_email"
+                    android:drawableStart="@drawable/org_symbol"
                     android:drawablePadding="10sp"
                     android:ems="10"
                     android:hint="Nombre Organización"
@@ -58,11 +57,10 @@
                     android:padding="10sp" />
 
                 <EditText
-                    android:id="@+id/registerEmailOrg"
+                    android:id="@+id/register_email"
                     android:layout_width="255dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
                     android:drawableStart="@drawable/ic_email"
                     android:drawablePadding="10sp"
@@ -73,13 +71,12 @@
                     android:padding="10sp" />
 
                 <EditText
-                    android:id="@+id/registerPassword"
+                    android:id="@+id/register_password"
                     android:layout_width="255dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
-                    android:drawableStart="@drawable/ic_email"
+                    android:drawableStart="@drawable/ic_key"
                     android:drawablePadding="10sp"
                     android:ems="10"
                     android:hint="Contraseña"
@@ -88,49 +85,46 @@
                     android:padding="10sp" />
 
                 <EditText
-                    android:id="@+id/registerPasswordConfirm"
+                    android:id="@+id/register_confirmPassword"
                     android:layout_width="255dp"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="30sp"
-                    android:layout_weight="1"
                     android:background="@drawable/custom_input"
                     android:drawableStart="@drawable/ic_key"
                     android:drawablePadding="10sp"
                     android:ems="10"
-                    android:hint="@string/pass"
+                    android:hint="Confirmar Contraseña"
                     android:inputType="textPassword"
                     android:padding="10sp" />
 
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30sp"
+            android:layout_weight="0.2"
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="261dp"
-                android:layout_marginTop="30sp"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:orientation="vertical"
-                tools:ignore="NestedWeights">
+            <Button
+                android:id="@+id/bttnCrearCuentaOrg"
+                android:layout_width="257sp"
+                android:layout_height="60sp"
+                android:background="@drawable/button_organizador"
+                android:textColor="@color/white"
+                android:text="SOLICITAR CUENTA" />
 
-                <Button
-                    android:id="@+id/bttnCrearCuentaOrg"
-                    android:layout_width="257sp"
-                    android:layout_height="60sp"
-                    android:background="@drawable/button_organizador"
-                    android:textColor="@color/white"
-                    android:text="SOLICITAR CUENTA" />
+            <Button
+                android:id="@+id/bttnVolver"
+                android:layout_width="243dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="20sp"
+                android:textColor="@color/white"
+                android:background="@drawable/button_organizador"
+                android:text="VOLVER" />
 
-                <Button
-                    android:id="@+id/bttnVolver"
-                    android:layout_width="243dp"
-                    android:layout_height="38dp"
-                    android:layout_marginTop="20sp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/button_organizador"
-                    android:text="VOLVER" />
-
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
