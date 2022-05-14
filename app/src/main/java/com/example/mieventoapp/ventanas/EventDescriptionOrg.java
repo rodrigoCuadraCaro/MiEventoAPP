@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.ListEventos;
@@ -23,6 +24,7 @@ import cz.msebera.android.httpclient.Header;
 public class EventDescriptionOrg extends AppCompatActivity {
     List<ListEventos> elements;
     private AsyncHttpClient client;
+    private LoadingScreen loadingScreen;
 
     TextView nombreEventoDesc, fechaEventoDesc, descEventoDesc, ubicacionEvento;
     Button bttnModificarEvento, bttnVolverOrg, bttnEliminarEvento;
@@ -49,6 +51,9 @@ public class EventDescriptionOrg extends AppCompatActivity {
         bttnModificarEvento = (Button) findViewById(R.id.bttnModificarEvento);
         bttnEliminarEvento = (Button) findViewById(R.id.bttnEliminarEvento);
         bttnVolverOrg = (Button) findViewById(R.id.bttnVolverOrg);
+
+        loadingScreen = new LoadingScreen(EventDescriptionOrg.this);
+
 
         Buttons(u, element);
     }
@@ -95,6 +100,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
     }
 
     private void deleteEvento(ListEventos ev, Usuarios u){
+        loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/eliminarEvento.php?idEvento="+ev.getIdEvento()+"&idUsuario="+ev.getIdOrganizador();
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -108,6 +114,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
 
                             Intent in = new Intent(EventDescriptionOrg.this, GestionarEventosOrg.class);
                             in.putExtra("user", u);
+                            loadingScreen.stopAnimation();
                             startActivity(in);
                             finish();
                         }
@@ -116,6 +123,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
                     AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
                     alert.setTitle("Error fatal");
                     alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                    loadingScreen.stopAnimation();
                     alert.show();
                 }
             }
@@ -125,6 +133,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
                 alert.show();
             }
         });

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.TipoEvento;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
@@ -33,6 +34,9 @@ public class AgregarEvento extends AppCompatActivity {
     private EditText nombreEvento, ubicacionEvento, descripcionEvento, fechaEvento;
     private Button bttnRegistrarEvento, bttnVolver;
 
+    private LoadingScreen loadingScreen;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +52,9 @@ public class AgregarEvento extends AppCompatActivity {
         bttnRegistrarEvento = (Button) findViewById(R.id.bttnRegistrarEvento);
         bttnVolver = (Button) findViewById(R.id.bttnVolver);
 
+        loadingScreen = new LoadingScreen(AgregarEvento.this);
+
+
         initSpinner();
         Buttons(u);
     }
@@ -56,6 +63,7 @@ public class AgregarEvento extends AppCompatActivity {
         bttnRegistrarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                loadingScreen.startAnimation();
                 String nombre = nombreEvento.getText().toString().replaceAll(" ", "%20");
                 String ubicacion = ubicacionEvento.getText().toString().replaceAll(" ", "%20");
                 String descripcion = descripcionEvento.getText().toString().replaceAll(" ", "%20");
@@ -66,7 +74,6 @@ public class AgregarEvento extends AppCompatActivity {
                 String check = checkEmpty(nombre, ubicacion, descripcion, fecha, tipo);
 
                 if (check.equals("")){
-
                      check = validateString(nombre, ubicacion, descripcion, fecha, tipo);
 
                      if (check.equals("")){
@@ -74,12 +81,14 @@ public class AgregarEvento extends AppCompatActivity {
                      } else{
                          AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
                          alert.setTitle("Error en ingreso");
+                         loadingScreen.stopAnimation();
                          alert.setMessage(check);
                          alert.show();
                      }
                 } else{
                     AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
                     alert.setTitle("Error en ingreso");
+                    loadingScreen.stopAnimation();
                     alert.setMessage(check);
                     alert.show();
                 }
@@ -112,6 +121,7 @@ public class AgregarEvento extends AppCompatActivity {
 
                             Intent i = new Intent(AgregarEvento.this, GestionarEventosOrg.class);
                             i.putExtra("user", u);
+                            loadingScreen.stopAnimation();
                             startActivity(i);
                             finish();
                         }
@@ -120,6 +130,7 @@ public class AgregarEvento extends AppCompatActivity {
                     AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
                     alert.setTitle("Error");
                     alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                    loadingScreen.stopAnimation();
                     alert.show();
                 }
             }
@@ -129,12 +140,14 @@ public class AgregarEvento extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(AgregarEvento.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
                 alert.show();
             }
         });
     }
 
     private void initSpinner() {
+        loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/getTipoEvento.php";
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -158,11 +171,13 @@ public class AgregarEvento extends AppCompatActivity {
                                 android.R.layout.simple_spinner_item, lista);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                         spinner.setAdapter(adapter);
+                        loadingScreen.stopAnimation();
 
                     } catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(AgregarEvento.this);
                         msg.setTitle("Error en tipo eventos");
                         msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
+                        loadingScreen.stopAnimation();
                         msg.show();
                     }
                 }
@@ -173,6 +188,7 @@ public class AgregarEvento extends AppCompatActivity {
                 AlertDialog.Builder msg = new AlertDialog.Builder(AgregarEvento.this);
                 msg.setTitle("Error en tipo eventos");
                 msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
+                loadingScreen.stopAnimation();
                 msg.show();
             }
         });

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.AdapterEventos;
@@ -27,8 +28,8 @@ import cz.msebera.android.httpclient.Header;
 
 public class GestionarEventosOrg extends AppCompatActivity {
     List<ListEventos> elements;
+    private LoadingScreen loadingScreen;
     private AsyncHttpClient client;
-
     private Button bttnVolver, bttnAgregarEvento;
 
     @Override
@@ -40,6 +41,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
         bttnVolver = (Button) findViewById(R.id.bttnVolverOrg);
         bttnAgregarEvento = (Button) findViewById(R.id.bttnAgregarEvento);
 
+        loadingScreen = new LoadingScreen(GestionarEventosOrg.this);
+
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
         Buttons(u);
@@ -47,6 +50,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
     }
 
     private void initList(Usuarios u){
+        loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/listarEventosOrg.php?idOrg="+u.getId();
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -87,11 +91,13 @@ public class GestionarEventosOrg extends AppCompatActivity {
                         recyclerView.setHasFixedSize(true);
                         recyclerView.setLayoutManager(new LinearLayoutManager(GestionarEventosOrg.this));
                         recyclerView.setAdapter(listEvents);
+                        loadingScreen.stopAnimation();
                     }
                     catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(GestionarEventosOrg.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
+                        loadingScreen.stopAnimation();
                         msg.show();
                     }
                 }
@@ -102,6 +108,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
                 AlertDialog.Builder msg = new AlertDialog.Builder(GestionarEventosOrg.this);
                 msg.setTitle("Error al listar!");
                 msg.setMessage("Hubo un error al listar intente nuevamente");
+                loadingScreen.stopAnimation();
                 msg.show();
             }
         });

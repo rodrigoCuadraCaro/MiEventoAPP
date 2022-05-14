@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.TipoEvento;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
@@ -37,6 +38,8 @@ public class ModificarEvento extends AppCompatActivity {
     private Spinner spinner;
     private EditText nombreEvento, ubicacionEvento, descripcionEvento, fechaEvento;
     private Button bttnModificarEvento, bttnVolver;
+    private LoadingScreen loadingScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +47,6 @@ public class ModificarEvento extends AppCompatActivity {
         setContentView(R.layout.activity_modificar_evento);
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
         ListEventos ev = (ListEventos)getIntent().getSerializableExtra("evento");
-
-        System.out.println("--- ID EVENTO ---");
-        System.out.println(ev.getIdEvento());
-        System.out.println("--- ID EVENTO ---");
 
         client = new AsyncHttpClient();
 
@@ -60,6 +59,10 @@ public class ModificarEvento extends AppCompatActivity {
         bttnModificarEvento = (Button) findViewById(R.id.bttnModificarEvento);
         bttnVolver = (Button) findViewById(R.id.bttnVolver);
 
+        loadingScreen = new LoadingScreen(ModificarEvento.this);
+
+        loadingScreen.startAnimation();
+
         initSpinner();
         initEvento(u, ev);
         Buttons(u, ev);
@@ -69,6 +72,7 @@ public class ModificarEvento extends AppCompatActivity {
         bttnModificarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                loadingScreen.startAnimation();
                 String nombre = nombreEvento.getText().toString().replaceAll(" ", "%20");
                 String descripcion = descripcionEvento.getText().toString().replaceAll(" ", "%20");
                 String ubicacion = ubicacionEvento.getText().toString().replaceAll(" ", "%20");
@@ -127,6 +131,7 @@ public class ModificarEvento extends AppCompatActivity {
 
                                 Intent i = new Intent(ModificarEvento.this, GestionarEventosOrg.class);
                                 i.putExtra("user", u);
+                                loadingScreen.stopAnimation();
                                 startActivity(i);
                                 finish();
                             } else {
@@ -136,12 +141,14 @@ public class ModificarEvento extends AppCompatActivity {
                             AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                             alert.setTitle("Error");
                             alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                            loadingScreen.stopAnimation();
                             alert.show();
                         }
                 }catch(Exception e){
                     AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                     alert.setTitle("Error");
                     alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                    loadingScreen.stopAnimation();
                     alert.show();
                 }
             }
@@ -151,6 +158,7 @@ public class ModificarEvento extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
                 alert.show();
             }
         });
@@ -174,6 +182,7 @@ public class ModificarEvento extends AppCompatActivity {
                             ev.setIdOrganizador(json.getJSONObject(i).getInt("id_usuario"));
                             ev.setIdTipo(json.getJSONObject(i).getInt("id_tipoevt"));
                             setTextEvent(ev);
+                            loadingScreen.stopAnimation();
                         }
 
                     }catch(Exception e){
@@ -182,6 +191,7 @@ public class ModificarEvento extends AppCompatActivity {
                         AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                         alert.setTitle("Error fatal");
                         alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                        loadingScreen.stopAnimation();
                         alert.show();
                     }
                 }
@@ -193,6 +203,7 @@ public class ModificarEvento extends AppCompatActivity {
                 AlertDialog.Builder alert = new AlertDialog.Builder(ModificarEvento.this);
                 alert.setTitle("Error fatal");
                 alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
                 alert.show();
             }
         });
@@ -222,11 +233,13 @@ public class ModificarEvento extends AppCompatActivity {
                                 android.R.layout.simple_spinner_item, lista);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                         spinner.setAdapter(adapter);
-
+                        loadingScreen.stopAnimation();
                     } catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(ModificarEvento.this);
                         msg.setTitle("Error en tipo eventos");
                         msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
+                        loadingScreen.stopAnimation();
+
                         msg.show();
                     }
                 }
@@ -237,6 +250,7 @@ public class ModificarEvento extends AppCompatActivity {
                 AlertDialog.Builder msg = new AlertDialog.Builder(ModificarEvento.this);
                 msg.setTitle("Error en tipo eventos");
                 msg.setMessage("Hubo un error al listar el tipo de eventos intente nuevamente");
+                loadingScreen.stopAnimation();
                 msg.show();
             }
         });
