@@ -85,39 +85,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
                 alert.setPositiveButton("Confirmar", new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialog, int i) {
-                        String url = "https://mieventoapp.000webhostapp.com/next/eliminarEvento.php?idEvento="+ev.getIdEvento()+"&idUsuario="+ev.getIdOrganizador();
-                        client.post(url, new AsyncHttpResponseHandler() {
-                            @Override
-                            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                                try {
-                                    if (statusCode == 200){
-                                        String rs = new String (responseBody);
-                                        if (rs.equals("1")){
-                                            Toast.makeText(EventDescriptionOrg.this,
-                                                    "Evento eliminado con exito!", Toast.LENGTH_LONG).show();
-
-                                            Intent in = new Intent(EventDescriptionOrg.this, GestionarEventosOrg.class);
-                                            in.putExtra("user", u);
-                                            startActivity(in);
-                                            finish();
-                                        }
-                                    }
-                                }catch(Exception e){
-                                    AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
-                                    alert.setTitle("Error fatal");
-                                    alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
-                                    alert.show();
-                                }
-                            }
-
-                            @Override
-                            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                                AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
-                                alert.setTitle("Error fatal");
-                                alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
-                                alert.show();
-                            }
-                        });
+                        deleteEvento(ev, u);
                     }
                 });
                 alert.setNegativeButton("Cancelar", null);
@@ -126,6 +94,40 @@ public class EventDescriptionOrg extends AppCompatActivity {
         });
     }
 
+    private void deleteEvento(ListEventos ev, Usuarios u){
+        String url = "https://mieventoapp.000webhostapp.com/next/eliminarEvento.php?idEvento="+ev.getIdEvento()+"&idUsuario="+ev.getIdOrganizador();
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    if (statusCode == 200){
+                        String rs = new String (responseBody);
+                        if (rs.equals("1")){
+                            Toast.makeText(EventDescriptionOrg.this,
+                                    "Evento eliminado con exito!", Toast.LENGTH_LONG).show();
 
+                            Intent in = new Intent(EventDescriptionOrg.this, GestionarEventosOrg.class);
+                            in.putExtra("user", u);
+                            startActivity(in);
+                            finish();
+                        }
+                    }
+                }catch(Exception e){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
+                    alert.setTitle("Error fatal");
+                    alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                    alert.show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(EventDescriptionOrg.this);
+                alert.setTitle("Error fatal");
+                alert.setMessage("Hubo un error con la base de datos, intente nuevamente.");
+                alert.show();
+            }
+        });
+    }
 }
 
