@@ -13,7 +13,7 @@ import com.example.mieventoapp.eventdata.ListEventos;
 
 public class EventDescriptionAs extends AppCompatActivity {
 
-    TextView nombreEventoDesc, nombreOrganizadorDesc, fechaEventoDesc, descEventoDesc;
+    TextView nombreEventoDesc, nombreOrganizadorDesc, fechaEventoDesc, descEventoDesc, Ubicacion;
     Button bttnGuardarFav, bttnVolverAsistente;
 
     @Override
@@ -26,11 +26,13 @@ public class EventDescriptionAs extends AppCompatActivity {
         nombreOrganizadorDesc = (TextView) findViewById(R.id.nombreOrganizadorDesc);
         fechaEventoDesc = (TextView) findViewById(R.id.fechaEventoDesc);
         descEventoDesc = (TextView) findViewById(R.id.descEventoDesc);
+        Ubicacion = (TextView) findViewById(R.id.ubicacionEvento);
 
         nombreEventoDesc.setText(element.getNombreEvento());
         nombreOrganizadorDesc.setText(element.getNombreOrganizador());
         fechaEventoDesc.setText(element.getFecha());
         descEventoDesc.setText(element.getDescripcion());
+        Ubicacion.setText(element.getUbicacion());
 
 
         bttnGuardarFav = (Button) findViewById(R.id.bttnGuardarFav);

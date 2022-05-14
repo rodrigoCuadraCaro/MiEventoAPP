@@ -20,126 +20,125 @@
         android:orientation="vertical"
         android:padding="15sp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="0sp"
+            android:layout_weight="0.9">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nombreEventoDesc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="[TITULO]"
                     android:gravity="center"
+                    android:text="[TITULO]"
                     android:textSize="40sp">
 
                 </TextView>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15sp"
+                    android:gravity="start"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_weight="0.07"
-                android:layout_marginBottom="15sp">
+                    <TextView
+                        android:id="@+id/ubicacionEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2sp"
+                        android:drawableStart="@drawable/ic_baseline_location_on_24"
+                        android:padding="16sp"
+                        android:text="[UBICACION]"
+                        android:textSize="25sp">
 
-                <TextView
-                    android:id="@+id/ubicacionEvento"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="[UBICACION]"
-                    android:drawableStart="@drawable/ic_baseline_location_on_24"
-                    android:padding="16sp"
-                    android:layout_marginEnd="2sp"
-                    android:textSize="25sp">
+                    </TextView>
 
-                </TextView>
+                    <TextView
+                        android:id="@+id/fechaEventoDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableStart="@drawable/ic_baseline_calendar_month_24"
+                        android:padding="16sp"
+                        android:text="[FECHA]"
+                        android:textSize="25sp">
 
-                <TextView
-                    android:id="@+id/fechaEventoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="[FECHA]"
-                    android:drawableStart="@drawable/ic_baseline_calendar_month_24"
-                    android:padding="16sp"
-                    android:layout_marginStart="50sp"
-                    android:textSize="25sp">
+                    </TextView>
 
-                </TextView>
+                </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15sp">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0sp"
-                android:layout_weight="0.3"
-                android:layout_marginBottom="15sp">
-
-                <TextView
-                    android:id="@+id/descEventoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="15sp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
+                    <TextView
+                        android:id="@+id/descEventoDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
                                      elit. Duis luctus velit viverra elit vehicula gravida."
-                    android:textSize="25sp" />
+                        android:textSize="25sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="223dp"
-                android:layout_weight="0.01"
-                android:gravity="center"
-                android:orientation="vertical">
+        </ScrollView>
 
-                <Button
-                    android:id="@+id/bttnModificarEvento"
-                    android:layout_width="290sp"
-                    android:layout_height="70sp"
-                    android:background="@drawable/button_organizador"
-                    android:drawableStart="@drawable/ic_baseline_edit_24"
-                    android:padding="16sp"
-                    android:text="MODIFICAR EVENTO"
-                    android:textColor="@color/white"
-                    android:textSize="18sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_weight="0.07"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                </Button>
+            <Button
+                android:id="@+id/bttnModificarEvento"
+                android:layout_width="300sp"
+                android:layout_height="60sp"
+                android:background="@drawable/button_organizador"
+                android:drawableStart="@drawable/ic_baseline_edit_24"
+                android:padding="16sp"
+                android:text="MODIFICAR EVENTO"
+                android:textColor="@color/white"
+                android:textSize="18sp">
 
-                <Button
-                    android:id="@+id/bttnEliminarEvento"
-                    android:layout_width="250sp"
-                    android:layout_height="70sp"
-                    android:layout_marginTop="18sp"
-                    android:background="@drawable/button_organizador"
-                    android:drawableStart="@drawable/ic_baseline_block_24"
-                    android:padding="16sp"
-                    android:text="ELIMINAR EVENTO"
-                    android:textColor="@color/white"
-                    android:textSize="18sp">
+            </Button>
 
-                </Button>
+            <Button
+                android:id="@+id/bttnEliminarEvento"
+                android:layout_width="250sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="5sp"
+                android:background="@drawable/button_organizador"
+                android:drawableStart="@drawable/ic_baseline_block_24"
+                android:padding="16sp"
+                android:text="ELIMINAR EVENTO"
+                android:textColor="@color/white"
+                android:textSize="18sp">
 
-                <Button
-                    android:id="@+id/bttnVolverOrg"
-                    android:layout_width="228sp"
-                    android:layout_height="60sp"
-                    android:layout_marginTop="18sp"
-                    android:background="@drawable/button_organizador"
-                    android:padding="16sp"
-                    android:text="Volver"
-                    android:textColor="@color/white"
-                    android:textSize="18sp">
+            </Button>
 
-                </Button>
+            <Button
+                android:id="@+id/bttnVolverOrg"
+                android:layout_width="228sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="5sp"
+                android:background="@drawable/button_organizador"
+                android:padding="16sp"
+                android:text="Volver"
+                android:textColor="@color/white"
+                android:textSize="18sp">
 
-            </LinearLayout>
+            </Button>
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -16,109 +16,126 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
+        android:weightSum="1"
+        android:orientation="vertical"
         android:padding="15sp">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:layout_height="0sp"
+            android:layout_weight="0.75">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nombreEventoDesc"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="EVENTO RANDOM #1"
                     android:gravity="center"
+                    android:text="[TITULO]"
                     android:textSize="40sp">
 
                 </TextView>
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15sp"
+                    android:gravity="start"
+                    android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_weight="0.08">
+                    <TextView
+                        android:id="@+id/nombreOrganizadorDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2sp"
+                        android:drawableStart="@drawable/org_symbol"
+                        android:padding="16sp"
+                        android:text="[ORGANIZADOR]"
+                        android:textSize="25sp">
 
-                <TextView
-                    android:id="@+id/nombreOrganizadorDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="[ORGANIZADOR]"
-                    android:layout_marginEnd="2sp"
-                    android:textSize="25sp">
+                    </TextView>
 
-                </TextView>
+                    <TextView
+                        android:id="@+id/ubicacionEvento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2sp"
+                        android:drawableStart="@drawable/ic_baseline_location_on_24"
+                        android:padding="16sp"
+                        android:text="[UBICACION]"
+                        android:textSize="25sp">
 
-                <TextView
-                    android:id="@+id/fechaEventoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="[FECHA]"
-                    android:layout_marginStart="50sp"
-                    android:textSize="25sp">
+                    </TextView>
 
-                </TextView>
+                    <TextView
+                        android:id="@+id/fechaEventoDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:drawableStart="@drawable/ic_baseline_calendar_month_24"
+                        android:padding="16sp"
+                        android:text="[FECHA]"
+                        android:textSize="25sp">
 
-            </LinearLayout>
+                    </TextView>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="0sp"
-                android:layout_weight="0.55">
+                </LinearLayout>
 
-                <TextView
-                    android:id="@+id/descEventoDesc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:padding="15sp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15sp">
+
+                    <TextView
+                        android:id="@+id/descEventoDesc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
                                      elit. Duis luctus velit viverra elit vehicula gravida."
-                    android:textSize="25sp" />
+                        android:textSize="25sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0sp"
-                android:layout_weight="0.35"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:layout_gravity="bottom">
 
-                <Button
-                    android:id="@+id/bttnGuardarFav"
-                    android:layout_width="290sp"
-                    android:layout_height="70sp"
-                    android:background="@drawable/button_menu"
-                    android:text="GUARDAR EN FAVORITOS"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:drawableStart="@drawable/ic_star"
-                    android:padding="16sp">
+        </ScrollView>
 
-                </Button>
-                <Button
-                    android:id="@+id/bttnVolverAsistente"
-                    android:layout_marginTop="18sp"
-                    android:layout_width="228sp"
-                    android:layout_height="60sp"
-                    android:background="@drawable/button_menu"
-                    android:text="Volver"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:padding="16sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.25"
+            android:gravity="center"
+            android:orientation="vertical">
 
-                </Button>
+            <Button
+                android:id="@+id/bttnGuardarFav"
+                android:layout_width="290sp"
+                android:layout_height="70sp"
+                android:background="@drawable/button_menu"
+                android:text="GUARDAR EN FAVORITOS"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_star"
+                android:padding="16sp">
 
-            </LinearLayout>
+            </Button>
+            <Button
+                android:id="@+id/bttnVolverAsistente"
+                android:layout_marginTop="18sp"
+                android:layout_width="228sp"
+                android:layout_height="60sp"
+                android:background="@drawable/button_menu"
+                android:text="Volver"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:padding="16sp">
+
+            </Button>
+
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
