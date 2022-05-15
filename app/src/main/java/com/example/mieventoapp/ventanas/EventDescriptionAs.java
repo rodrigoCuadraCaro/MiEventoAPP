@@ -25,6 +25,7 @@ public class EventDescriptionAs extends AppCompatActivity {
     private AsyncHttpClient client;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
