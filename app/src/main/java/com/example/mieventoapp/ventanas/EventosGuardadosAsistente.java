@@ -117,7 +117,7 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
     }
 
     private void moveToDescription(ListEventos item, Usuarios u){
-        Intent i = new Intent(this, EventDescriptionAs.class);
+        Intent i = new Intent(this, EventDescriptionFav.class);
         i.putExtra("user", u);
         i.putExtra("ListElement", item);
         startActivity(i);
