@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.AdapterEventos;
 import com.example.mieventoapp.eventdata.ListEventos;
@@ -37,22 +38,25 @@ public class FeedAsistente extends AppCompatActivity {
         client = new AsyncHttpClient();
         bttnVolverAsistente = (Button) findViewById(R.id.bttnVolverAsistente);
 
-        buttons();
-        initList();
+        Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
+
+        buttons(u);
+        initList(u);
     }
 
-    private void buttons(){
+    private void buttons(Usuarios u){
         bttnVolverAsistente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(FeedAsistente.this, MenuAsistente.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
         });
     }
 
-    private void initList(){
+    private void initList(Usuarios u){
         String url = "https://mieventoapp.000webhostapp.com/next/listarEventos.php";
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -83,7 +87,7 @@ public class FeedAsistente extends AppCompatActivity {
                         AdapterEventos listEvents = new AdapterEventos(elements, FeedAsistente.this, new AdapterEventos.OnItemClickListener() {
                             @Override
                             public void onItemClick(ListEventos item) {
-                                moveToDescription(item);
+                                moveToDescription(item, u);
                             }
                         });
                         RecyclerView recyclerView = findViewById(R.id.listadoEventos);
@@ -112,8 +116,9 @@ public class FeedAsistente extends AppCompatActivity {
 
     }
 
-    private void moveToDescription(ListEventos item){
+    private void moveToDescription(ListEventos item, Usuarios u){
         Intent i = new Intent(this, EventDescriptionAs.class);
+        i.putExtra("user", u);
         i.putExtra("ListElement", item);
         startActivity(i);
         finish();

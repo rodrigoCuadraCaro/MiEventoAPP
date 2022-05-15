@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 
 public class MenuAsistente extends AppCompatActivity {
@@ -23,15 +24,17 @@ public class MenuAsistente extends AppCompatActivity {
         bttnMiPerfil = (Button) findViewById(R.id.bttnMiPerfil);
         bttnGuardados = (Button) findViewById(R.id.bttnGuardados);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
+        Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
-        Buttons();
+        Buttons(u);
     }
 
-    private void Buttons(){
+    private void Buttons(Usuarios u){
         bttnEventos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuAsistente.this, FeedAsistente.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
@@ -41,6 +44,7 @@ public class MenuAsistente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuAsistente.this, ModificarPerfilAsistente.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
@@ -50,6 +54,7 @@ public class MenuAsistente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuAsistente.this, EventosGuardadosAsistente.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }

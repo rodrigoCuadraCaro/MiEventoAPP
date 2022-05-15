@@ -116,7 +116,7 @@
                 android:layout_width="290sp"
                 android:layout_height="70sp"
                 android:background="@drawable/button_menu"
-                android:text="GUARDAR EN FAVORITOS"
+                android:text="@string/guardar_en_favoritos"
                 android:textSize="18sp"
                 android:textColor="@color/white"
                 android:drawableStart="@drawable/ic_star"
