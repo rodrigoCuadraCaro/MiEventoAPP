@@ -24,7 +24,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Solicitud Organizador"
-                android:textSize="40sp" />
+                android:textSize="35sp" />
 
         </LinearLayout>
 

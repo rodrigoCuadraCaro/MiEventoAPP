@@ -63,7 +63,7 @@ public class CrearCuenta extends AppCompatActivity {
                     if (check.equals("")){
 
                         if (pass.equals(passconf)){
-                            tryRegister(name,mail,pass);
+                            checkUser(name,mail,pass);
                         } else{
                             AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
                             alert.setTitle("Error en datos");
@@ -174,6 +174,45 @@ public class CrearCuenta extends AppCompatActivity {
         }
 
         return msg;
+    }
+
+    private void checkUser(String name, String mail, String pass){
+        String url = "https://mieventoapp.000webhostapp.com/next/checkUsuario.php?email="+mail;
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    if (statusCode == 200){
+                        String rs = new String (responseBody);
+                        if (!rs.equals("[]")){
+                            AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
+                            alert.setTitle("Correo en uso!");
+                            alert.setMessage("Este correo ya se encuentra en uso");
+                            loadingScreen.stopAnimation();
+                            alert.show();
+                        } else {
+                            tryRegister(name, mail, pass);
+                        }
+                    }
+                }catch(Exception e){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
+                    alert.setTitle("Error");
+                    alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
+                    loadingScreen.stopAnimation();
+                    alert.show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuenta.this);
+                alert.setTitle("Error Fatal");
+                alert.setMessage("Hubo un error con la base de datos, intente nuevamente");
+                loadingScreen.stopAnimation();
+                alert.show();
+            }
+        });
+
     }
 
 }
