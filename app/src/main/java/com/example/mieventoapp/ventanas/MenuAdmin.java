@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.VentanaTickets;
@@ -51,6 +52,8 @@ public class MenuAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MenuAdmin.this,MainActivity.class);
+                Toast.makeText(MenuAdmin.this ,"Se ha salido de la sesión!",
+                        Toast.LENGTH_LONG).show();
                 startActivity(intent);
                 finish();
             }

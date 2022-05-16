@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
@@ -52,6 +53,8 @@ public class MenuOrganizador extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuOrganizador.this, MainActivity.class);
+                Toast.makeText(MenuOrganizador.this ,"Se ha salido de la sesión!",
+                        Toast.LENGTH_LONG).show();
                 startActivity(i);
                 finish();
             }
