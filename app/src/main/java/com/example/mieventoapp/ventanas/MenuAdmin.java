@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.VentanaTickets;
 
@@ -23,17 +24,20 @@ public class MenuAdmin extends AppCompatActivity {
         bttnCtaBloq = (Button) findViewById(R.id.bttnCtaBloq);
         bttnTickets = (Button) findViewById(R.id.bttnTickets);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
+        Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
-        Buttons();
+
+        Buttons(u);
 
     }
 
-    private void Buttons(){
+    private void Buttons(Usuarios u){
         bttnCtaBloq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuAdmin.this,CuentasBloqueadas.class);
-                startActivity(intent);
+                Intent i = new Intent(MenuAdmin.this,CuentasBloqueadas.class);
+                i.putExtra("user", u);
+                startActivity(i);
                 finish();
             }
         });
@@ -42,8 +46,8 @@ public class MenuAdmin extends AppCompatActivity {
         bttnTickets.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MenuAdmin.this, VentanaTickets.class);
-                startActivity(intent);
+                Intent i = new Intent(MenuAdmin.this, VentanaTickets.class);
+                startActivity(i);
                 finish();
             }
         });
@@ -51,10 +55,10 @@ public class MenuAdmin extends AppCompatActivity {
         bttnCerrarSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(MenuAdmin.this,MainActivity.class);
+                Intent i=new Intent(MenuAdmin.this,MainActivity.class);
                 Toast.makeText(MenuAdmin.this ,"Se ha salido de la sesión!",
                         Toast.LENGTH_LONG).show();
-                startActivity(intent);
+                startActivity(i);
                 finish();
             }
         });
