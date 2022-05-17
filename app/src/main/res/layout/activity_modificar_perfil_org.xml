@@ -38,12 +38,12 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/nombreOrg"
+                android:id="@+id/register_username"
                 android:layout_width="255dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/ic_email"
+                android:drawableStart="@drawable/org_symbol"
                 android:drawablePadding="10sp"
                 android:ems="10"
                 android:hint="Nombre Organización"
@@ -52,7 +52,7 @@
                 tools:ignore="NestedWeights" />
 
             <EditText
-                android:id="@+id/emailOrg"
+                android:id="@+id/register_email"
                 android:layout_width="255dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -66,12 +66,12 @@
                 android:padding="10sp" />
 
             <EditText
-                android:id="@+id/passwordOrg"
+                android:id="@+id/register_password"
                 android:layout_width="255dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
                 android:background="@drawable/custom_input"
-                android:drawableStart="@drawable/ic_email"
+                android:drawableStart="@drawable/ic_key"
                 android:drawablePadding="10sp"
                 android:ems="10"
                 android:hint="Contraseña"
@@ -80,7 +80,7 @@
                 android:padding="10sp" />
 
             <EditText
-                android:id="@+id/passwordConfirmOrg"
+                android:id="@+id/register_confirmPassword"
                 android:layout_width="255dp"
                 android:layout_height="45dp"
                 android:layout_gravity="center"

@@ -26,9 +26,7 @@ public class MenuAdmin extends AppCompatActivity {
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
-
         Buttons(u);
-
     }
 
     private void Buttons(Usuarios u){
