@@ -98,6 +98,7 @@ public class ModificarPerfilOrg extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ModificarPerfilOrg.this, MenuOrganizador.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }

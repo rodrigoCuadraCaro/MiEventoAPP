@@ -98,6 +98,7 @@ public class ModificarPerfilAsistente extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(ModificarPerfilAsistente.this, MenuAsistente.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
