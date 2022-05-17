@@ -16,14 +16,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="0.25">
+            android:layout_weight="0.25"
+            android:orientation="vertical"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/txtBienvenida"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Bienvenido"
                 android:textSize="60sp"
+                android:gravity="center">
+
+            </TextView>
+            <TextView
+                android:id="@+id/txtUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bienvenido"
+                android:textSize="35sp"
                 android:gravity="center">
 
             </TextView>

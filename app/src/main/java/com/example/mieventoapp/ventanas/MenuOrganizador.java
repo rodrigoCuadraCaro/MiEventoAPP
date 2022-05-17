@@ -15,7 +15,7 @@ import com.example.mieventoapp.R;
 public class MenuOrganizador extends AppCompatActivity {
 
     private Button bttnGestionEventos, bttnModificarPerfilAdmin, bttnCerrarSesion;
-    private TextView txtBienvenida;
+    private TextView txtUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +25,9 @@ public class MenuOrganizador extends AppCompatActivity {
         bttnGestionEventos = (Button) findViewById(R.id.bttnGestionarEventos);
         bttnModificarPerfilAdmin = (Button) findViewById(R.id.bttnModificarPerfilAdmin);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
-        txtBienvenida = (TextView) findViewById(R.id.txtBienvenida);
+        txtUserName = (TextView) findViewById(R.id.txtUserName);
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
-        txtBienvenida.setText("BIENVENIDO "+ u.getName());
+        txtUserName.setText(u.getName());
 
         Buttons(u);
     }
