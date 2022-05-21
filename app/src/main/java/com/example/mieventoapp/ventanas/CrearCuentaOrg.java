@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ public class CrearCuentaOrg extends AppCompatActivity {
 
     private EditText registerUsername, registerEmail, registerPassword, registerPasswordConfirm;
     private Button bttnCrearCuentaOrg, bttnVolver;
+    private CheckBox checkBoxTyC;
     private LoadingScreen loadingScreen;
     private AsyncHttpClient client;
 
@@ -40,6 +42,7 @@ public class CrearCuentaOrg extends AppCompatActivity {
         registerEmail = (EditText) findViewById(R.id.register_email);
         registerPassword = (EditText) findViewById(R.id.register_password);
         registerPasswordConfirm = (EditText) findViewById(R.id.register_confirmPassword);
+        checkBoxTyC = (CheckBox) findViewById(R.id.checkBoxTyC);
 
         loadingScreen = new LoadingScreen(CrearCuentaOrg.this);
         client = new AsyncHttpClient();
@@ -62,9 +65,16 @@ public class CrearCuentaOrg extends AppCompatActivity {
                 if (checkEmpty.equals("")){
                     String check = stringCheck(name,mail, pass);
                     if (check.equals("")){
-
                         if (pass.equals(passconf)){
-                            checkUser(name,mail,pass);
+                            if (checkBoxTyC.isChecked()){
+                                checkUser(name,mail,pass);
+                            } else {
+                                AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuentaOrg.this);
+                                alert.setTitle("Terminos y Condiciones");
+                                alert.setMessage("Debes estar de acuerdo con los términos y condiciones para poder crear tu cuenta");
+                                loadingScreen.stopAnimation();
+                                alert.show();
+                            }
                         } else{
                             AlertDialog.Builder alert = new AlertDialog.Builder(CrearCuentaOrg.this);
                             alert.setTitle("Error en datos");

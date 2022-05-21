@@ -52,7 +52,7 @@
                     android:drawablePadding="10sp"
                     android:ems="10"
                     android:hint="Usuario"
-                    android:inputType="textPersonName"
+                    android:inputType="textEmailAddress"
                     android:padding="10sp" />
 
                 <EditText

@@ -14,14 +14,14 @@ import com.example.mieventoapp.eventdata.VentanaTickets;
 
 public class MenuAdmin extends AppCompatActivity {
 
-    private Button bttnCtaBloq, bttnTickets, bttnCerrarSesion;
+    private Button bttnSolicitudes, bttnTickets, bttnCerrarSesion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_admin);
 
-        bttnCtaBloq = (Button) findViewById(R.id.bttnCtaBloq);
+        bttnSolicitudes = (Button) findViewById(R.id.bttnSolicitudes);
         bttnTickets = (Button) findViewById(R.id.bttnTickets);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
@@ -30,7 +30,7 @@ public class MenuAdmin extends AppCompatActivity {
     }
 
     private void Buttons(Usuarios u){
-        bttnCtaBloq.setOnClickListener(new View.OnClickListener() {
+        bttnSolicitudes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuAdmin.this,CuentasBloqueadas.class);

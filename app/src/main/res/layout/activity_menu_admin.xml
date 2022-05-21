@@ -36,14 +36,14 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/bttnCtaBloq"
+                android:id="@+id/bttnSolicitudes"
                 android:padding="16sp"
                 android:drawableStart="@drawable/ic_baseline_block_24"
                 android:layout_width="250sp"
                 android:layout_height="60sp"
                 android:background="@drawable/custom_button"
                 android:layout_marginTop="15dp"
-                android:text="Cuentas Bloqueadas"
+                android:text="Solicitudes de Registro"
                 app:layout_constraintTop_toBottomOf="@+id/TXTBIEN" />
 
             <Button
