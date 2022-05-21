@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mieventoapp.Clases.Usuarios;
@@ -14,6 +15,7 @@ import com.example.mieventoapp.R;
 public class MenuAsistente extends AppCompatActivity {
 
     private Button bttnEventos, bttnMiPerfil, bttnGuardados, bttnCerrarSesion;
+    private TextView txtBienvenida;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,10 @@ public class MenuAsistente extends AppCompatActivity {
         bttnMiPerfil = (Button) findViewById(R.id.bttnMiPerfil);
         bttnGuardados = (Button) findViewById(R.id.bttnGuardados);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
+        txtBienvenida = (TextView) findViewById(R.id.txtBienvenida);
+
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
+        txtBienvenida.setText("BIENVENIDO "+u.getName());
 
         Buttons(u);
     }

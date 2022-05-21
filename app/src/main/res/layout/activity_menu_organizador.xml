@@ -16,9 +16,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="0.15">
+            android:layout_weight="0.25">
 
             <TextView
+                android:id="@+id/txtBienvenida"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Bienvenido"
@@ -26,12 +27,12 @@
                 android:gravity="center">
 
             </TextView>
-
+            
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0sp"
-            android:layout_weight="0.6"
+            android:layout_weight="0.7"
             android:orientation="vertical"
             android:gravity="center">
 
