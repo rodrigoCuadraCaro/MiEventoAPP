@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".ventanas.UserDescription"
+            android:exported="false" />
+        <activity
             android:name=".ventanas.UsuariosSolAdm"
             android:exported="false" />
         <activity
@@ -46,9 +49,6 @@
             android:exported="false" />
         <activity
             android:name=".ventanas.MenuAdmin"
-            android:exported="false" />
-        <activity
-            android:name=".ventanas.CuentasBloqueadas"
             android:exported="false" />
         <activity
             android:name=".ventanas.EventosGuardadosAsistente"

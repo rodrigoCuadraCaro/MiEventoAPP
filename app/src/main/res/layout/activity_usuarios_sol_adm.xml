@@ -48,7 +48,7 @@
             </TextView>
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listadoEventos"
+                android:id="@+id/listadoUsuarios"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal">
@@ -66,7 +66,7 @@
             android:gravity="center">
 
             <Button
-                android:id="@+id/bttnVolverAsistente"
+                android:id="@+id/bttnVolver"
                 android:layout_width="250sp"
                 android:layout_height="70sp"
                 android:background="@drawable/button_menu"

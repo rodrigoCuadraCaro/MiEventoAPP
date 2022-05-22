@@ -1,0 +1,142 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/tarjetaUsuarioDesc"
+    tools:context=".ventanas.UserDescription"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="5sp"
+    android:layout_marginBottom="15sp"
+    cardview:cardCornerRadius="16sp"
+    app:cardUseCompatPadding="true"
+    cardview:cardElevation="5sp"
+    android:layout_gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical"
+        android:padding="15sp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.5">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Organizador en Solicitud"
+                    android:textSize="40sp">
+
+                </TextView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15sp"
+                    android:gravity="start"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/nombreUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2sp"
+                        android:drawableStart="@drawable/org_symbol"
+                        android:padding="16sp"
+                        android:text="[NOMBRE]"
+                        android:textSize="25sp">
+
+                    </TextView>
+
+                    <TextView
+                        android:id="@+id/correoUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginEnd="2sp"
+                        android:drawableStart="@drawable/ic_email"
+                        android:padding="16sp"
+                        android:text="[CORREO]"
+                        android:textSize="25sp">
+
+                    </TextView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15sp">
+
+                    <TextView
+                        android:id="@+id/mensaje"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp"
+                        android:text="Recuerde comunicarse con el organizador antes de tomar un veredicto."
+                        android:justificationMode="inter_word"
+                        android:textStyle="bold"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0sp"
+            android:layout_weight="0.4"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/bttnAprobar"
+                android:layout_width="290sp"
+                android:layout_height="70sp"
+                android:background="@drawable/button_menu"
+                android:text="Aprobar Solicitud"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_baseline_check_circle_24"
+                android:padding="16sp">
+
+            </Button>
+            <Button
+                android:id="@+id/bttnRechazar"
+                android:layout_marginTop="18sp"
+                android:layout_width="290sp"
+                android:layout_height="70sp"
+                android:background="@drawable/button_menu"
+                android:text="Rechazar Solicitud"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/ic_baseline_block_24"
+                android:padding="16sp">
+
+            </Button>
+            <Button
+                android:id="@+id/bttnVolver"
+                android:layout_marginTop="18sp"
+                android:layout_width="228sp"
+                android:layout_height="60sp"
+                android:background="@drawable/button_menu"
+                android:text="Volver"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:padding="16sp">
+
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

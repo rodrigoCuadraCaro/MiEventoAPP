@@ -33,7 +33,7 @@ public class MenuAdmin extends AppCompatActivity {
         bttnSolicitudes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuAdmin.this,CuentasBloqueadas.class);
+                Intent i = new Intent(MenuAdmin.this,UsuariosSolAdm.class);
                 i.putExtra("user", u);
                 startActivity(i);
                 finish();

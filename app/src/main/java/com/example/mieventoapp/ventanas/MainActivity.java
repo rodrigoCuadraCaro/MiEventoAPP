@@ -95,18 +95,24 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(new String(responseBody));
                         Usuarios u = new Usuarios();
-                        u.setId(json.getInt("id_usu"));
-                        u.setCorreo(json.getString("correo"));
+                        u.setId      (json.   getInt("id_usu"));
+                        u.setCorreo  (json.getString("correo"));
                         u.setPassword(json.getString("pass"));
-                        u.setName(json.getString("nombre"));
-                        u.setEstado(json.getInt("id_est"));
-                        u.setTipo(json.getInt("id_tip"));
+                        u.setName    (json.getString("nombre"));
+                        u.setEstado  (json.   getInt("id_est"));
+                        u.setTipo    (json.   getInt("id_tip"));
 
                         if (u.getEstado() == 2){
                             AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
                             msg.setTitle("Cuenta deshabilitada");
                             msg.setMessage("Su cuenta se encuentra bloqueda o no se encuentra disponible" +
                                     " en este momento. Comuniquese con un administrador para solicitar ayuda");
+                            loadingScreen.stopAnimation();
+                            msg.show();
+                        } else if(u.getEstado() == 3){
+                            AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
+                            msg.setTitle("Cuenta en Solicitud");
+                            msg.setMessage("Su cuenta se encuentra en solicitud, por favor espere a que sea aprobada por un administrador");
                             loadingScreen.stopAnimation();
                             msg.show();
                         } else {

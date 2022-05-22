@@ -124,7 +124,6 @@ public class ModificarEvento extends AppCompatActivity {
                 try {
                     if (statusCode == 200){
                         String rs = new String (responseBody);
-                        System.out.println(rs);
                             if (rs.equals("1")){
                                 Toast.makeText(ModificarEvento.this,
                                         "Evento modificado con exito!", Toast.LENGTH_LONG).show();
