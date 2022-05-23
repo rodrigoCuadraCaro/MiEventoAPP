@@ -59,6 +59,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer_asistente.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_header_drawer_menu.xml" value="0.3625" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/tarjeta_reporrtes.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/tarjeta_usuarios.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layouts/navBarAsistente/layout/nav_header_drawer2.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/menu/activity_drawer_drawer.xml" value="0.3625" />
@@ -69,7 +70,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

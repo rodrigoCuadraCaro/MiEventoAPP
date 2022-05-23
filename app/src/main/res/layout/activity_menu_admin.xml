@@ -38,7 +38,7 @@
             <Button
                 android:id="@+id/bttnSolicitudes"
                 android:padding="16sp"
-                android:drawableStart="@drawable/ic_baseline_block_24"
+                android:drawableStart="@drawable/ic_baseline_edit_24"
                 android:layout_width="250sp"
                 android:layout_height="60sp"
                 android:background="@drawable/custom_button"
