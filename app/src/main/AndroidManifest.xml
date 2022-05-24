@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".ventanas.ReportarUsuario"
+            android:exported="false" />
+        <activity
+            android:name=".ventanas.ReportDetail"
+            android:exported="false" />
+        <activity
             android:name=".ventanas.UserDescription"
             android:exported="false" />
         <activity
@@ -45,7 +51,7 @@
             android:name=".ventanas.MenuOrganizador"
             android:exported="false" />
         <activity
-            android:name=".eventdata.VentanaTickets"
+            android:name=".ventanas.VentanaTickets"
             android:exported="false" />
         <activity
             android:name=".ventanas.MenuAdmin"

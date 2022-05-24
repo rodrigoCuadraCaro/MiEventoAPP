@@ -137,7 +137,6 @@ public class UserDescription extends AppCompatActivity {
                             alert.show();
                         }
                     }
-
                     @Override
                     public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                         AlertDialog.Builder alert = new AlertDialog.Builder(UserDescription.this);

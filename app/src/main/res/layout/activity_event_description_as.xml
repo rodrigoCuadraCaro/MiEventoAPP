@@ -13,129 +13,157 @@
     cardview:cardElevation="5sp"
     android:layout_gravity="center_horizontal">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1"
-        android:orientation="vertical"
-        android:padding="15sp">
+        android:layout_height="match_parent">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_weight="0.75">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15sp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nombreEventoDesc"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="[TITULO]"
-                    android:textSize="40sp">
-
-                </TextView>
+                android:layout_height="500sp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="15sp"
-                    android:gravity="start"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/nombreOrganizadorDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="2sp"
-                        android:drawableStart="@drawable/org_symbol"
-                        android:padding="16sp"
-                        android:text="[ORGANIZADOR]"
-                        android:textSize="25sp">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/ubicacionEvento"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="2sp"
-                        android:drawableStart="@drawable/ic_baseline_location_on_24"
-                        android:padding="16sp"
-                        android:text="[UBICACION]"
-                        android:textSize="25sp">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/fechaEventoDesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:drawableStart="@drawable/ic_baseline_calendar_month_24"
-                        android:padding="16sp"
-                        android:text="[FECHA]"
-                        android:textSize="25sp">
-
-                    </TextView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="15sp">
-
-                    <TextView
-                        android:id="@+id/descEventoDesc"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="15sp"
-                        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/nombreEventoDesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="[TITULO]"
+                            android:textSize="40sp">
+
+                        </TextView>
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15sp"
+                        android:gravity="start"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/nombreOrganizadorDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="2sp"
+                            android:drawableStart="@drawable/org_symbol"
+                            android:padding="16sp"
+                            android:text="[ORGANIZADOR]"
+                            android:textSize="25sp">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/ubicacionEvento"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="2sp"
+                            android:drawableStart="@drawable/ic_baseline_location_on_24"
+                            android:padding="16sp"
+                            android:text="[UBICACION]"
+                            android:textSize="25sp">
+
+                        </TextView>
+
+                        <TextView
+                            android:id="@+id/fechaEventoDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:drawableStart="@drawable/ic_baseline_calendar_month_24"
+                            android:padding="16sp"
+                            android:text="[FECHA]"
+                            android:textSize="25sp">
+
+                        </TextView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="15sp">
+
+                        <TextView
+                            android:id="@+id/descEventoDesc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="15sp"
+                            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
                                      elit. Duis luctus velit viverra elit vehicula gravida."
-                        android:textSize="25sp" />
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
 
-        </ScrollView>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0sp"
-            android:layout_weight="0.25"
-            android:gravity="center"
-            android:orientation="vertical">
+                <Button
+                    android:id="@+id/bttnGuardarFav"
+                    android:layout_width="290sp"
+                    android:layout_height="70sp"
+                    android:background="@drawable/button_menu"
+                    android:text="@string/guardar_en_favoritos"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/ic_star"
+                    android:padding="16sp">
 
-            <Button
-                android:id="@+id/bttnGuardarFav"
-                android:layout_width="290sp"
-                android:layout_height="70sp"
-                android:background="@drawable/button_menu"
-                android:text="@string/guardar_en_favoritos"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:drawableStart="@drawable/ic_star"
-                android:padding="16sp">
+                </Button>
 
-            </Button>
-            <Button
-                android:id="@+id/bttnVolverAsistente"
-                android:layout_marginTop="18sp"
-                android:layout_width="228sp"
-                android:layout_height="60sp"
-                android:background="@drawable/button_menu"
-                android:text="Volver"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:padding="16sp">
+                <Button
+                    android:id="@+id/bttnReportar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="70sp"
+                    android:layout_marginTop="15sp"
+                    android:background="@drawable/button_report"
+                    android:drawableStart="@drawable/ic_baseline_report_problem_24"
+                    android:ellipsize="none"
+                    android:padding="16sp"
+                    android:text="REPORTAR "
+                    android:textColor="@color/white"
+                    android:textSize="18sp">
 
-            </Button>
+                </Button>
 
+                <Button
+                    android:id="@+id/bttnVolverAsistente"
+                    android:layout_marginTop="18sp"
+                    android:layout_width="228sp"
+                    android:layout_height="60sp"
+                    android:background="@drawable/button_menu"
+                    android:text="Volver"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:padding="16sp">
+
+                </Button>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </ScrollView>
 </androidx.cardview.widget.CardView>

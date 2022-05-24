@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ventanas.ReportarUsuario"
+    android:padding="16dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Reportar Cuenta"
+                    android:textSize="35sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="500sp"
+                    android:layout_gravity="top"
+                    android:orientation="vertical"
+                    android:padding="16sp">
+
+                    <TextView
+                        android:id="@+id/nombreUsuario"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="[NOMBRE]">
+
+                    </TextView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="25sp"
+                        android:textStyle="bold"
+                        android:text="Seleccione razón de reporte: "
+                        android:textSize="18sp">
+
+                    </TextView>
+
+
+                    <RadioGroup
+                        android:id="@+id/radioReportes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25sp">
+
+                        <RadioButton
+                            android:id="@+id/radioFalso"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Usuario Falso" />
+
+                        <RadioButton
+                            android:id="@+id/radioIlegal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Actividades Ilegales" />
+
+                        <RadioButton
+                            android:id="@+id/radioEstafa"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Estafa" />
+
+                        <RadioButton
+                            android:id="@+id/radioVentaIlegal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Venta y/o tráfico de estupefacientes" />
+
+                    </RadioGroup>
+
+                    <CheckBox
+                        android:id="@+id/checkBoxTyC"
+                        android:layout_marginTop="40sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tycreporte"
+                        android:justificationMode="inter_word"/>
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/bttnReportar"
+                    android:layout_width="257sp"
+                    android:layout_height="60sp"
+                    android:background="@drawable/button_report"
+                    android:drawableStart="@drawable/ic_baseline_report_problem_24"
+                    android:padding="15sp"
+                    android:text="INGRESAR REPORTE"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/bttnVolver"
+                    android:layout_width="243dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20sp"
+                    android:background="@drawable/button_organizador"
+                    android:text="VOLVER"
+                    android:textColor="@color/white" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

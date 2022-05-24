@@ -21,7 +21,7 @@ import cz.msebera.android.httpclient.Header;
 public class EventDescriptionAs extends AppCompatActivity {
 
     private TextView nombreEventoDesc, nombreOrganizadorDesc, fechaEventoDesc, descEventoDesc, Ubicacion;
-    private Button bttnGuardarFav, bttnVolverAsistente;
+    private Button bttnGuardarFav, bttnVolverAsistente, bttnReportar;
     private AsyncHttpClient client;
 
 
@@ -48,6 +48,7 @@ public class EventDescriptionAs extends AppCompatActivity {
 
         bttnGuardarFav = (Button) findViewById(R.id.bttnGuardarFav);
         bttnVolverAsistente = (Button) findViewById(R.id.bttnVolverAsistente);
+        bttnReportar = (Button) findViewById(R.id.bttnReportar);
 
         client = new AsyncHttpClient();
 
@@ -67,6 +68,17 @@ public class EventDescriptionAs extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i = new Intent(EventDescriptionAs.this, FeedAsistente.class);
                 i.putExtra("user", u);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        bttnReportar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(EventDescriptionAs.this, ReportarUsuario.class);
+                i.putExtra("user", u);
+                i.putExtra("evento", ev);
                 startActivity(i);
                 finish();
             }

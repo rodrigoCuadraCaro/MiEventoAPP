@@ -14,6 +14,10 @@ public class Usuarios implements Parcelable {
     private int tipo;
     private String tipoStr;
 
+    private int idTipoReporte;
+    private int idReporte;
+    private String reporte;
+
     public Usuarios() {
 
     }
@@ -34,6 +38,15 @@ public class Usuarios implements Parcelable {
         this.name = name;
         this.estadoStr = estadoStr;
         this.tipoStr = tipoStr;
+    }
+
+    public Usuarios(int id, String correo, String name, int idTipoReporte, int idReporte, String reporte) {
+        this.id = id;
+        this.correo = correo;
+        this.name = name;
+        this.idTipoReporte = idTipoReporte;
+        this.idReporte = idReporte;
+        this.reporte = reporte;
     }
 
     public int getId() {
@@ -100,6 +113,30 @@ public class Usuarios implements Parcelable {
         this.tipoStr = tipoStr;
     }
 
+    public int getIdTipoReporte() {
+        return idTipoReporte;
+    }
+
+    public void setIdTipoReporte(int idTipoReporte) {
+        this.idTipoReporte = idTipoReporte;
+    }
+
+    public int getIdReporte() {
+        return idReporte;
+    }
+
+    public void setIdReporte(int idReporte) {
+        this.idReporte = idReporte;
+    }
+
+    public String getReporte() {
+        return reporte;
+    }
+
+    public void setReporte(String reporte) {
+        this.reporte = reporte;
+    }
+
 
     @Override
     public int describeContents() {
@@ -116,6 +153,9 @@ public class Usuarios implements Parcelable {
         dest.writeString(this.estadoStr);
         dest.writeInt(this.tipo);
         dest.writeString(this.tipoStr);
+        dest.writeInt(this.idTipoReporte);
+        dest.writeInt(this.idReporte);
+        dest.writeString(this.reporte);
     }
 
     public void readFromParcel(Parcel source) {
@@ -127,6 +167,9 @@ public class Usuarios implements Parcelable {
         this.estadoStr = source.readString();
         this.tipo = source.readInt();
         this.tipoStr = source.readString();
+        this.idTipoReporte = source.readInt();
+        this.idReporte = source.readInt();
+        this.reporte = source.readString();
     }
 
     protected Usuarios(Parcel in) {
@@ -138,6 +181,9 @@ public class Usuarios implements Parcelable {
         this.estadoStr = in.readString();
         this.tipo = in.readInt();
         this.tipoStr = in.readString();
+        this.idTipoReporte = in.readInt();
+        this.idReporte = in.readInt();
+        this.reporte = in.readString();
     }
 
     public static final Creator<Usuarios> CREATOR = new Creator<Usuarios>() {
