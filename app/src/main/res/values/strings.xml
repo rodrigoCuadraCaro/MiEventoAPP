@@ -3,4 +3,5 @@
     <string name="pass">Contraseña</string>
     <string name="guardar_en_favoritos">GUARDAR EN FAVORITOS</string>
     <string name="terminosApp">Al crear una cuenta aceptas los términos y condiciones de uso de la aplicación. En caso de que estas sean inclumplidas tu cuenta puede ser removida sin previo aviso y tus datos ser entregado a las autoridades en caso de la gravedad de la denuncia. Al solicitar tu cuenta debes esperar a que un administrador apruebe tu solicitud.</string>
+    <string name="tyCadmin">Recuerde hacer una revisión exhaustiva del caso y hacer cumplir los estándares de seguridad estipulados en el reglamento de uso de la aplicación</string>
 </resources>

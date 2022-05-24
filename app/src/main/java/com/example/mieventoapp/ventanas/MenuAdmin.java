@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
-import com.example.mieventoapp.eventdata.VentanaTickets;
 
 public class MenuAdmin extends AppCompatActivity {
 
