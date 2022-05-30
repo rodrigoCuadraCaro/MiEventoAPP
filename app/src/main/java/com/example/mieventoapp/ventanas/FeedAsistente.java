@@ -74,6 +74,7 @@ public class FeedAsistente extends AppCompatActivity {
                             ev.setFecha(json.getJSONObject(i).getString("fecha_evento"));
                             ev.setNombreOrganizador(json.getJSONObject(i).getString("nombre"));
                             ev.setTipoEvento(json.getJSONObject(i).getString("nombreTipoEvt"));
+                            ev.setIdOrganizador(json.getJSONObject(i).getInt("id_usuario"));
                             lista.add(ev);
                         }
 
@@ -81,7 +82,7 @@ public class FeedAsistente extends AppCompatActivity {
                         for (int i = 0; i < lista.size(); i++){
                             ListEventos l = new ListEventos();
                             l = lista.get(i);
-                            elements.add(new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getNombreOrganizador(), l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getTipoEvento()));
+                            elements.add(new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getNombreOrganizador(), l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getTipoEvento(), l.getIdOrganizador()));
                         }
 
                         AdapterEventos listEvents = new AdapterEventos(elements, FeedAsistente.this, new AdapterEventos.OnItemClickListener() {

@@ -52,6 +52,17 @@ public class ListEventos implements Serializable {
         this.tipoEvento = tipoEvento;
     }
 
+    public ListEventos(int idEvento, String nombreEvento, String nombreOrganizador, String fecha, String ubicacion, String descripcion, String tipoEvento, int idOrganizador) {
+        this.idEvento = idEvento;
+        this.nombreEvento = nombreEvento;
+        this.idOrganizador = idOrganizador;
+        this.nombreOrganizador = nombreOrganizador;
+        this.fecha = fecha;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+        this.tipoEvento = tipoEvento;
+    }
+
     public int getIdEvento() {
         return idEvento;
     }

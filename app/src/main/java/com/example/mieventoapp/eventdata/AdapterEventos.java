@@ -48,7 +48,7 @@ public class AdapterEventos extends RecyclerView.Adapter<AdapterEventos.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView name, orgName, evDate, descEvent, ubicacion;
-        
+
         ViewHolder(View itemView){
             super(itemView);
             name = itemView.findViewById(R.id.nombreEvento);
