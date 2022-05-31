@@ -68,16 +68,7 @@ public class ReportDetail extends AppCompatActivity {
                             if (statusCode == 200){
                                 String rs = new String (responseBody);
                                 if (rs.equals("1")){
-                                    AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
-                                    alert.setTitle("Bloqueado!");
-                                    alert.setMessage("El usuario ha sido bloqueado con éxito!");
-                                    loadingScreen.stopAnimation();
-                                    alert.show();
-
-                                    Intent i = new Intent(ReportDetail.this, VentanaTickets.class);
-                                    i.putExtra("user", sesion);
-                                    startActivity(i);
-                                    finish();
+                                    tryDeleteReport(report, sesion);
                                 } else {
                                     AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
                                     alert.setTitle("Error");
@@ -110,51 +101,7 @@ public class ReportDetail extends AppCompatActivity {
         bttnEliminarReporte.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingScreen.startAnimation();
-                String url = "http://mieventoapp.000webhostapp.com/next/eliminarReporte.php?idUsuario="+report.getId();
-                client.post(url, new AsyncHttpResponseHandler() {
-                    @Override
-                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                        try {
-                            if (statusCode == 200){
-                                String rs = new String (responseBody);
-                                if (rs.equals("1")){
-                                    AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
-                                    alert.setTitle("Reporte eliminado!");
-                                    alert.setMessage("El reporte ha sido eliminado correctamente.");
-                                    loadingScreen.stopAnimation();
-                                    alert.show();
-
-                                    Intent i = new Intent(ReportDetail.this, VentanaTickets.class);
-                                    i.putExtra("user", sesion);
-                                    startActivity(i);
-                                    finish();
-                                } else {
-                                    AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
-                                    alert.setTitle("Error");
-                                    alert.setMessage("Hubo un error al eliminar este reporte, intente nuevamente");
-                                    loadingScreen.stopAnimation();
-                                    alert.show();
-                                }
-                            }
-                        } catch (Exception e){
-                            AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
-                            alert.setTitle("Error!");
-                            alert.setMessage("Hubo un error al eliminar este reporte, intente nuevamente");
-                            loadingScreen.stopAnimation();
-                            alert.show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                        AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
-                        alert.setTitle("Error Fatal");
-                        alert.setMessage("Hubo un error al conectar con la base de datos, intente nuevamente.");
-                        loadingScreen.stopAnimation();
-                        alert.show();
-                    }
-                });
+                tryDeleteReport(report, sesion);
             }
         });
 
@@ -165,6 +112,54 @@ public class ReportDetail extends AppCompatActivity {
                 i.putExtra("user", sesion);
                 startActivity(i);
                 finish();
+            }
+        });
+    }
+
+    private void tryDeleteReport(Usuarios report, Usuarios sesion){
+        loadingScreen.startAnimation();
+        String url = "http://mieventoapp.000webhostapp.com/next/eliminarReporte.php?idUsuario="+report.getId();
+        client.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                try {
+                    if (statusCode == 200){
+                        String rs = new String (responseBody);
+                        if (rs.equals("1")){
+                            AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
+                            alert.setTitle("Reporte eliminado!");
+                            alert.setMessage("El reporte ha sido eliminado correctamente.");
+                            loadingScreen.stopAnimation();
+                            alert.show();
+
+                            Intent i = new Intent(ReportDetail.this, VentanaTickets.class);
+                            i.putExtra("user", sesion);
+                            startActivity(i);
+                            finish();
+                        } else {
+                            AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
+                            alert.setTitle("Error");
+                            alert.setMessage("Hubo un error al eliminar este reporte, intente nuevamente");
+                            loadingScreen.stopAnimation();
+                            alert.show();
+                        }
+                    }
+                } catch (Exception e){
+                    AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
+                    alert.setTitle("Error!");
+                    alert.setMessage("Hubo un error al eliminar este reporte, intente nuevamente");
+                    loadingScreen.stopAnimation();
+                    alert.show();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(ReportDetail.this);
+                alert.setTitle("Error Fatal");
+                alert.setMessage("Hubo un error al conectar con la base de datos, intente nuevamente.");
+                loadingScreen.stopAnimation();
+                alert.show();
             }
         });
     }
