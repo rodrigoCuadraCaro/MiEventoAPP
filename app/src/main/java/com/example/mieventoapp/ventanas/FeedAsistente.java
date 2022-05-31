@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.AdapterEventos;
@@ -27,6 +28,8 @@ import cz.msebera.android.httpclient.Header;
 public class FeedAsistente extends AppCompatActivity {
     List<ListEventos> elements;
     private AsyncHttpClient client;
+    private LoadingScreen loadingScreen;
+
 
     private Button bttnVolverAsistente;
 
@@ -39,6 +42,8 @@ public class FeedAsistente extends AppCompatActivity {
         bttnVolverAsistente = (Button) findViewById(R.id.bttnVolverAsistente);
 
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
+
+        loadingScreen = new LoadingScreen(FeedAsistente.this);
 
         buttons(u);
         initList(u);
@@ -57,6 +62,7 @@ public class FeedAsistente extends AppCompatActivity {
     }
 
     private void initList(Usuarios u){
+        loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/listarEventos.php";
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -95,12 +101,15 @@ public class FeedAsistente extends AppCompatActivity {
                         recyclerView.setHasFixedSize(true);
                         recyclerView.setLayoutManager(new LinearLayoutManager(FeedAsistente.this));
                         recyclerView.setAdapter(listEvents);
+                        loadingScreen.stopAnimation();
                     }
                     catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(FeedAsistente.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
                         msg.show();
+                        loadingScreen.stopAnimation();
+
                     }
                 }
             }
@@ -112,6 +121,8 @@ public class FeedAsistente extends AppCompatActivity {
                 msg.setMessage("Se ha perdido la conexión con la base de datos, intente " +
                         "nuevamente o comuníquese con soporte si el problema persiste.");
                 msg.show();
+                loadingScreen.stopAnimation();
+
             }
         });
 
