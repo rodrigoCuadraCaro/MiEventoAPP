@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import cz.msebera.android.httpclient.Header;
 public class ReportarUsuario extends AppCompatActivity {
     private TextView nombreUsuario;
     private RadioGroup radioReportes;
+    private CheckBox checkBoxTyC;
     private RadioButton radioFalso, radioIlegal, radioEstafa, radioVentaIlegal;
     private Button bttnReportar, bttnVolver;
     private AsyncHttpClient client;
@@ -45,6 +47,8 @@ public class ReportarUsuario extends AppCompatActivity {
         radioVentaIlegal = findViewById(R.id.radioVentaIlegal);
         bttnReportar = findViewById(R.id.bttnReportar);
         bttnVolver = findViewById(R.id.bttnVolver);
+        checkBoxTyC = (CheckBox) findViewById(R.id.checkBoxTyC);
+
 
         loadingScreen = new LoadingScreen(ReportarUsuario.this);
 
@@ -60,9 +64,15 @@ public class ReportarUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int radiosel =  procesarId();
-                System.out.println(radiosel + "<--- RADIOSEL!");
                 if (radiosel != 0){
-                    reportUser(ev, u, radiosel);
+                    if (checkBoxTyC.isChecked()){
+                        reportUser(ev, u, radiosel);
+                    } else {
+                        AlertDialog.Builder alert = new AlertDialog.Builder(ReportarUsuario.this);
+                        alert.setTitle("Error");
+                        alert.setMessage("por favor acepta las condiciones de reporte.");
+                        alert.show();
+                    }
                 } else {
                     System.out.println("else!");
                     AlertDialog.Builder alert = new AlertDialog.Builder(ReportarUsuario.this);
