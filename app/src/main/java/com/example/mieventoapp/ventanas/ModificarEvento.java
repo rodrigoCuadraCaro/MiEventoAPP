@@ -63,7 +63,6 @@ public class ModificarEvento extends AppCompatActivity {
 
         loadingScreen.startAnimation();
 
-        initSpinner();
         initEvento(u, ev);
         Buttons(u, ev);
     }
@@ -170,18 +169,18 @@ public class ModificarEvento extends AppCompatActivity {
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if (statusCode == 200){
                     try {
-                        JSONArray json = new JSONArray(new String(responseBody));
+                        JSONObject json = new JSONObject(new String(responseBody));
                         ListEventos ev = new ListEventos();
                         for (int i = 0; i < json.length(); i++){
-                            ev.setIdEvento(json.getJSONObject(i).getInt("id_evento"));
-                            ev.setNombreEvento(json.getJSONObject(i).getString("nombreEvento"));
-                            ev.setUbicacion(json.getJSONObject(i).getString("ub_evento"));
-                            ev.setDescripcion(json.getJSONObject(i).getString("desc_evento"));
-                            ev.setFecha(json.getJSONObject(i).getString("fecha_evento"));
-                            ev.setIdOrganizador(json.getJSONObject(i).getInt("id_usuario"));
-                            ev.setIdTipo(json.getJSONObject(i).getInt("id_tipoevt"));
+                            ev.setIdEvento(json.getInt("id_evento"));
+                            ev.setNombreEvento(json.getString("nombreEvento"));
+                            ev.setUbicacion(json.getString("ub_evento"));
+                            ev.setDescripcion(json.getString("desc_evento"));
+                            ev.setFecha(json.getString("fecha_evento"));
+                            ev.setIdOrganizador(json.getInt("id_usuario"));
+                            ev.setIdTipo(json.getInt("id_tipoevt"));
                             setTextEvent(ev);
-                            loadingScreen.stopAnimation();
+                            initSpinner(ev.getIdTipo());
                         }
 
                     }catch(Exception e){
@@ -208,7 +207,7 @@ public class ModificarEvento extends AppCompatActivity {
         });
     }
 
-    private void initSpinner() {
+    private void initSpinner(int id) {
         String url = "https://mieventoapp.000webhostapp.com/next/getTipoEvento.php";
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -228,10 +227,11 @@ public class ModificarEvento extends AppCompatActivity {
                             TipoEvento tip = lista.get(i);
                         }
 
-                        ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<>(ModificarEvento.this,
+                        ArrayAdapter<TipoEvento> adapter = new ArrayAdapter<TipoEvento>(ModificarEvento.this,
                                 android.R.layout.simple_spinner_item, lista);
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
                         spinner.setAdapter(adapter);
+                        spinner.setSelection(id - 1);
                         loadingScreen.stopAnimation();
                     } catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(ModificarEvento.this);
