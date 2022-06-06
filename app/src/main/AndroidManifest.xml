@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MiEventoAPP">
         <activity
+            android:name=".ventanas.BloqueadoDetail"
+            android:exported="false" />
+        <activity
+            android:name=".ventanas.FeedBloqueados"
+            android:exported="false" />
+        <activity
             android:name=".ventanas.ReportarUsuario"
             android:exported="false" />
         <activity

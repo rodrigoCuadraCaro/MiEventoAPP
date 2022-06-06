@@ -33,8 +33,6 @@ public class ReportDetail extends AppCompatActivity {
         Usuarios sesion = (Usuarios) getIntent().getParcelableExtra("sesion");
         Usuarios report = (Usuarios) getIntent().getParcelableExtra("report");
 
-
-
         nombreUsuario = (TextView) findViewById(R.id.nombreUsuario);
         correoUsuario = (TextView) findViewById(R.id.correoUsuario);
         motivoReporte = (TextView) findViewById(R.id.motivoReporte);

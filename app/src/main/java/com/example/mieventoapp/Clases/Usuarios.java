@@ -49,6 +49,13 @@ public class Usuarios implements Parcelable {
         this.reporte = reporte;
     }
 
+    public Usuarios(int id, String correo, String name, int estado) {
+        this.id = id;
+        this.correo = correo;
+        this.name = name;
+        this.estado = estado;
+    }
+
     public int getId() {
         return id;
     }

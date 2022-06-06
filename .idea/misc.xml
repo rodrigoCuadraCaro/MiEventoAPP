@@ -17,6 +17,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/Guardados.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/ModificarPerfilAsistente.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_agregar_evento.xml" value="0.8149882903981265" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_bloqueado_detail.xml" value="0.7833723653395784" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_crear_cuenta.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_crear_cuenta_org.xml" value="0.7289002557544757" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_cuentas_bloqueadas.xml" value="0.75" />
@@ -28,6 +29,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_event_description_org.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_eventos_guardados_asistente.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_feed_asistente.xml" value="0.75" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_feed_bloqueados.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_gestionar_eventos_org.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_main.xml" value="0.75" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/activity_menu_admin.xml" value="0.9" />
@@ -55,6 +57,7 @@
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/fragment_slideshow.xml" value="0.18541666666666667" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/lista_eventos.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/lista_eventos_org.xml" value="0.8149882903981265" />
+        <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/lista_usuarios_sol.xml" value="0.8149882903981265" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/loading_screen.xml" value="0.9" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_asistente.xml" value="0.3625" />
         <entry key="..\:/AndroidProjects/MiEventoAPP/app/src/main/res/layout/nav_activity_main.xml" value="0.3625" />
@@ -73,7 +76,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

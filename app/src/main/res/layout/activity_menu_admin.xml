@@ -43,8 +43,7 @@
                 android:layout_height="60sp"
                 android:background="@drawable/custom_button"
                 android:layout_marginTop="15dp"
-                android:text="Solicitudes de Registro"
-                app:layout_constraintTop_toBottomOf="@+id/TXTBIEN" />
+                android:text="Solicitudes de Registro" />
 
             <Button
                 android:id="@+id/bttnTickets"
@@ -54,8 +53,17 @@
                 android:layout_height="60sp"
                 android:layout_marginTop="15dp"
                 android:background="@drawable/custom_button"
-                android:text="Tickets"
-                app:layout_constraintTop_toBottomOf="@+id/btnc" />
+                android:text="Tickets" />
+
+            <Button
+                android:id="@+id/bttnBloqueados"
+                android:padding="16sp"
+                android:drawableStart="@drawable/org_symbol"
+                android:layout_width="250sp"
+                android:layout_height="60sp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/custom_button"
+                android:text="Usuarios Bloqueados" />
 
             <Button
                 android:id="@+id/bttnCerrarSesion"

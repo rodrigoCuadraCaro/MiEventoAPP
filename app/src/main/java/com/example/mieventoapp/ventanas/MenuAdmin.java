@@ -13,7 +13,7 @@ import com.example.mieventoapp.R;
 
 public class MenuAdmin extends AppCompatActivity {
 
-    private Button bttnSolicitudes, bttnTickets, bttnCerrarSesion;
+    private Button bttnSolicitudes, bttnTickets, bttnCerrarSesion, bttnBloqueados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +23,8 @@ public class MenuAdmin extends AppCompatActivity {
         bttnSolicitudes = (Button) findViewById(R.id.bttnSolicitudes);
         bttnTickets = (Button) findViewById(R.id.bttnTickets);
         bttnCerrarSesion = (Button) findViewById(R.id.bttnCerrarSesion);
+        bttnBloqueados = (Button) findViewById(R.id.bttnBloqueados);
+
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
         Buttons(u);
@@ -44,6 +46,17 @@ public class MenuAdmin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(MenuAdmin.this, VentanaTickets.class);
+                i.putExtra("user", u);
+                startActivity(i);
+                finish();
+            }
+        });
+
+        bttnBloqueados.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MenuAdmin.this,FeedBloqueados.class);
+                i.putExtra("user", u);
                 startActivity(i);
                 finish();
             }
