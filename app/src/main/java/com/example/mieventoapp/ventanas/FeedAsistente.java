@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
@@ -29,6 +30,8 @@ public class FeedAsistente extends AppCompatActivity {
     List<ListEventos> elements;
     private AsyncHttpClient client;
     private LoadingScreen loadingScreen;
+    private TextView txtFeedVacio;
+    private RecyclerView listadoEventos;
 
 
     private Button bttnVolverAsistente;
@@ -40,6 +43,8 @@ public class FeedAsistente extends AppCompatActivity {
 
         client = new AsyncHttpClient();
         bttnVolverAsistente = (Button) findViewById(R.id.bttnVolverAsistente);
+        txtFeedVacio = findViewById(R.id.txtFeedVacio);
+        listadoEventos = findViewById(R.id.listadoEventos);
 
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
 
@@ -91,25 +96,29 @@ public class FeedAsistente extends AppCompatActivity {
                             elements.add(new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getNombreOrganizador(), l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getTipoEvento(), l.getIdOrganizador()));
                         }
 
-                        AdapterEventos listEvents = new AdapterEventos(elements, FeedAsistente.this, new AdapterEventos.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(ListEventos item) {
-                                moveToDescription(item, u);
-                            }
-                        });
-                        RecyclerView recyclerView = findViewById(R.id.listadoEventos);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(FeedAsistente.this));
-                        recyclerView.setAdapter(listEvents);
+                        if (lista.isEmpty()){
+                            listadoEventos.setVisibility(View.GONE);
+                            txtFeedVacio.setVisibility(View.VISIBLE);
+                        } else {
+                            AdapterEventos listEvents = new AdapterEventos(elements, FeedAsistente.this, new AdapterEventos.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(ListEventos item) {
+                                    moveToDescription(item, u);
+                                }
+                            });
+                            RecyclerView recyclerView = findViewById(R.id.listadoEventos);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(FeedAsistente.this));
+                            recyclerView.setAdapter(listEvents);
+                        }
                         loadingScreen.stopAnimation();
                     }
                     catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(FeedAsistente.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
-                        msg.show();
                         loadingScreen.stopAnimation();
-
+                        msg.show();
                     }
                 }
             }
@@ -120,9 +129,8 @@ public class FeedAsistente extends AppCompatActivity {
                 msg.setTitle("Error fatal");
                 msg.setMessage("Se ha perdido la conexión con la base de datos, intente " +
                         "nuevamente o comuníquese con soporte si el problema persiste.");
-                msg.show();
                 loadingScreen.stopAnimation();
-
+                msg.show();
             }
         });
 

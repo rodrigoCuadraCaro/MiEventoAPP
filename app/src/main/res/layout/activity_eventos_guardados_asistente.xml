@@ -48,6 +48,16 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
+            <TextView
+                android:id="@+id/txtFeedVacio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/feedFavoritosFALSE"
+                android:visibility="gone">
+
+            </TextView>
+
 
         </LinearLayout>
 

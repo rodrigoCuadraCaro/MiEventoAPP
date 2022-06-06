@@ -5,4 +5,6 @@
     <string name="terminosApp">Al crear una cuenta aceptas los términos y condiciones de uso de la aplicación. En caso de que estas sean inclumplidas tu cuenta puede ser removida sin previo aviso y tus datos ser entregado a las autoridades en caso de la gravedad de la denuncia. Al solicitar tu cuenta debes esperar a que un administrador apruebe tu solicitud.</string>
     <string name="tyCadmin">Recuerde hacer una revisión exhaustiva del caso y hacer cumplir los estándares de seguridad estipulados en el reglamento de uso de la aplicación</string>
     <string name="tycreporte">Al presionar reportar cuenta afirmas que el reporte fue realizado de manera honesta. Además aceptas que el staff pueda comunicarse contigo en caso de solicitar cualquier información.</string>
+    <string name="feedAsistenteFalse">No hay eventos disponibles en este momento!</string>
+    <string name="feedFavoritosFALSE">No tienes eventos favoritos por ahora. (En caso de que un evento ya no apareciera en la lista, puede que este haya sido eliminado, contáctate con soporte para más información).</string>
 </resources>

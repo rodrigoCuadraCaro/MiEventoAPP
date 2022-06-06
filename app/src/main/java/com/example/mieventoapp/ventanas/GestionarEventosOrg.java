@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
@@ -31,6 +32,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
     private LoadingScreen loadingScreen;
     private AsyncHttpClient client;
     private Button bttnVolver, bttnAgregarEvento;
+    private TextView txtFeedVacio;
+    private RecyclerView listadoEventos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
         client = new AsyncHttpClient();
         bttnVolver = (Button) findViewById(R.id.bttnVolverOrg);
         bttnAgregarEvento = (Button) findViewById(R.id.bttnAgregarEvento);
+        txtFeedVacio = findViewById(R.id.txtFeedVacio);
+        listadoEventos = findViewById(R.id.listadoEventos);
 
         loadingScreen = new LoadingScreen(GestionarEventosOrg.this);
 
@@ -81,16 +86,21 @@ public class GestionarEventosOrg extends AppCompatActivity {
                                             l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getIdTipo(), l.getTipoEvento()));
                         }
 
-                        AdapterOrganizador listEvents = new AdapterOrganizador(elements, GestionarEventosOrg.this, new AdapterOrganizador.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(ListEventos item) {
-                                moveToDescription(item, u);
-                            }
-                        });
-                        RecyclerView recyclerView = findViewById(R.id.listadoEventosOrg);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(GestionarEventosOrg.this));
-                        recyclerView.setAdapter(listEvents);
+                        if (lista.isEmpty()){
+                            listadoEventos.setVisibility(View.GONE);
+                            txtFeedVacio.setVisibility(View.VISIBLE);
+                        } else {
+                            AdapterEventos listEvents = new AdapterEventos(elements, GestionarEventosOrg.this, new AdapterEventos.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(ListEventos item) {
+                                    moveToDescription(item, u);
+                                }
+                            });
+                            RecyclerView recyclerView = findViewById(R.id.listadoEventos);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(GestionarEventosOrg.this));
+                            recyclerView.setAdapter(listEvents);
+                        }
                         loadingScreen.stopAnimation();
                     }
                     catch (Exception e){

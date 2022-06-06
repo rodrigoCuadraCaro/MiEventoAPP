@@ -9,7 +9,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.AdapterEventos;
@@ -27,7 +29,10 @@ import cz.msebera.android.httpclient.Header;
 public class EventosGuardadosAsistente extends AppCompatActivity {
     List<ListEventos> elements;
     private AsyncHttpClient client;
+    private LoadingScreen loadingScreen;
     private Button bttnVolver;
+    private TextView txtFeedVacio;
+    private RecyclerView listadoEventos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,11 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
         setContentView(R.layout.activity_eventos_guardados_asistente);
 
         bttnVolver = (Button) findViewById(R.id.bttnVolverAsistente);
+        loadingScreen = new LoadingScreen(EventosGuardadosAsistente.this);
+        txtFeedVacio = findViewById(R.id.txtFeedVacio);
+        listadoEventos = findViewById(R.id.listadoEventos);
+
+
 
         client = new AsyncHttpClient();
         Usuarios u = (Usuarios) getIntent().getParcelableExtra("user");
@@ -57,6 +67,7 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
     }
 
     private void initList(Usuarios u){
+        loadingScreen.startAnimation();
         String url = "http://mieventoapp.000webhostapp.com/next/listarEventosFavoritos.php?idUsuario="+u.getId();
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -77,28 +88,28 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
                             lista.add(ev);
                         }
 
-                        elements = new ArrayList<>();
-                        for (int i = 0; i < lista.size(); i++){
-                            ListEventos l = new ListEventos();
-                            l = lista.get(i);
-                            elements.add(new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getNombreOrganizador(), l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getTipoEvento()));
+                        if (lista.isEmpty()){
+                            listadoEventos.setVisibility(View.GONE);
+                            txtFeedVacio.setVisibility(View.VISIBLE);
+                        } else {
+                            AdapterEventos listEvents = new AdapterEventos(elements, EventosGuardadosAsistente.this, new AdapterEventos.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(ListEventos item) {
+                                    moveToDescription(item, u);
+                                }
+                            });
+                            RecyclerView recyclerView = findViewById(R.id.listadoEventos);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(EventosGuardadosAsistente.this));
+                            recyclerView.setAdapter(listEvents);
                         }
-
-                        AdapterEventos listEvents = new AdapterEventos(elements, EventosGuardadosAsistente.this, new AdapterEventos.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(ListEventos item) {
-                                moveToDescription(item, u);
-                            }
-                        });
-                        RecyclerView recyclerView = findViewById(R.id.listadoEventos);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(EventosGuardadosAsistente.this));
-                        recyclerView.setAdapter(listEvents);
+                        loadingScreen.stopAnimation();
                     }
                     catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(EventosGuardadosAsistente.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
+                        loadingScreen.stopAnimation();
                         msg.show();
                     }
                 }
@@ -110,6 +121,7 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
                 msg.setTitle("Error fatal");
                 msg.setMessage("Se ha perdido la conexión con la base de datos, intente " +
                         "nuevamente o comuníquese con soporte si el problema persiste.");
+                loadingScreen.stopAnimation();
                 msg.show();
             }
         });

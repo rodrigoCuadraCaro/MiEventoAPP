@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
+import com.example.mieventoapp.Clases.LoadingScreen;
 import com.example.mieventoapp.Clases.Usuarios;
 import com.example.mieventoapp.R;
 import com.example.mieventoapp.eventdata.AdapterEventos;
@@ -30,6 +32,10 @@ public class UsuariosSolAdm extends AppCompatActivity {
     private List<Usuarios> elements;
     private AsyncHttpClient client;
     private Button bttnVolver;
+    private TextView txtFeedVacio;
+    private RecyclerView listadoUsuarios;
+    private LoadingScreen loadingScreen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,11 @@ public class UsuariosSolAdm extends AppCompatActivity {
         Usuarios sesion = (Usuarios) getIntent().getParcelableExtra("user");
 
         bttnVolver = (Button) findViewById(R.id.bttnVolver);
+        txtFeedVacio = findViewById(R.id.txtFeedVacio);
+        listadoUsuarios = findViewById(R.id.listadoUsuarios);
+
+        loadingScreen = new LoadingScreen(UsuariosSolAdm.this);
+
 
         client = new AsyncHttpClient();
         initList(sesion);
@@ -57,6 +68,7 @@ public class UsuariosSolAdm extends AppCompatActivity {
     }
 
     private void initList(Usuarios sesion){
+        loadingScreen.startAnimation();
         String url = "http://mieventoapp.000webhostapp.com/next/listarUsuariosSol.php";
         client.post(url, new AsyncHttpResponseHandler() {
             @Override
@@ -83,21 +95,28 @@ public class UsuariosSolAdm extends AppCompatActivity {
                             elements.add(new Usuarios(l.getId(), l.getCorreo(), l.getPassword(), l.getName(), l.getEstado(), l.getTipo()));
                         }
 
-                        AdapterUsuarios listUsuarios = new AdapterUsuarios(elements, UsuariosSolAdm.this, new AdapterUsuarios.OnItemClickListener() {
-                            @Override
-                            public void onItemClick(Usuarios item) {
-                                moveToDescription(item, sesion);
-                            }
-                        });
-                        RecyclerView recyclerView = findViewById(R.id.listadoUsuarios);
-                        recyclerView.setHasFixedSize(true);
-                        recyclerView.setLayoutManager(new LinearLayoutManager(UsuariosSolAdm.this));
-                        recyclerView.setAdapter(listUsuarios);
+                        if (lista.isEmpty()){
+                            listadoUsuarios.setVisibility(View.GONE);
+                            txtFeedVacio.setVisibility(View.VISIBLE);
+                        } else {
+                            AdapterUsuarios listUsuarios = new AdapterUsuarios(elements, UsuariosSolAdm.this, new AdapterUsuarios.OnItemClickListener() {
+                                @Override
+                                public void onItemClick(Usuarios item) {
+                                    moveToDescription(item, sesion);
+                                }
+                            });
+                            RecyclerView recyclerView = findViewById(R.id.listadoUsuarios);
+                            recyclerView.setHasFixedSize(true);
+                            recyclerView.setLayoutManager(new LinearLayoutManager(UsuariosSolAdm.this));
+                            recyclerView.setAdapter(listUsuarios);
+                        }
+                        loadingScreen.stopAnimation();
                     }
                     catch (Exception e){
                         AlertDialog.Builder msg = new AlertDialog.Builder(UsuariosSolAdm.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
+                        loadingScreen.stopAnimation();
                         msg.show();
                     }
                 }
@@ -109,6 +128,7 @@ public class UsuariosSolAdm extends AppCompatActivity {
                 msg.setTitle("Error fatal");
                 msg.setMessage("Se ha perdido la conexión con la base de datos, intente " +
                         "nuevamente o comuníquese con soporte si el problema persiste.");
+                loadingScreen.stopAnimation();
                 msg.show();
             }
         });
