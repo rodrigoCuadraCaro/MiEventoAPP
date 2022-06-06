@@ -46,6 +46,8 @@ public class ModificarPerfilAsistente extends AppCompatActivity {
         registerPassword = (EditText) findViewById(R.id.register_password);
         registerPasswordConfirm = (EditText) findViewById(R.id.register_confirmPassword);
 
+        registerEmail.setEnabled(false);
+
         client = new AsyncHttpClient();
         loadingScreen = new LoadingScreen(ModificarPerfilAsistente.this);
 
@@ -256,7 +258,7 @@ public class ModificarPerfilAsistente extends AppCompatActivity {
                     System.out.println(e.getMessage());
                     AlertDialog.Builder alert = new AlertDialog.Builder(ModificarPerfilAsistente.this);
                     alert.setTitle("Error");
-                    alert.setMessage("por favor verifique que los campos sean correctos o ingresados xd");
+                    alert.setMessage("por favor verifique que los campos sean correctos o ingresados");
                     loadingScreen.stopAnimation();
                     alert.show();
                 }

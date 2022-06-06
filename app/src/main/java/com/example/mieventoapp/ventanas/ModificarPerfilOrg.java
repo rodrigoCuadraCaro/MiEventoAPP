@@ -45,6 +45,9 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         registerPassword = (EditText) findViewById(R.id.register_password);
         registerPasswordConfirm = (EditText) findViewById(R.id.register_confirmPassword);
 
+        registerEmail.setEnabled(false);
+
+
         client = new AsyncHttpClient();
         loadingScreen = new LoadingScreen(ModificarPerfilOrg.this);
 
