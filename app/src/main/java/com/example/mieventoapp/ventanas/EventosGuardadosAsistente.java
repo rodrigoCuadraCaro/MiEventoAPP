@@ -54,6 +54,8 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
         buttons(u);
     }
 
+    //inicia los botones en la ventana, se necesitan la clase Usuarios para llevar la clase correspondiente
+    // a la ventana de detalles.
     private void buttons(Usuarios u){
         bttnVolver.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -66,6 +68,7 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
         });
     }
 
+    //Lista los eventos favoritos del usuario.
     private void initList(Usuarios u){
         loadingScreen.startAnimation();
         String url = "http://mieventoapp.000webhostapp.com/next/listarEventosFavoritos.php?idUsuario="+u.getId();
@@ -128,6 +131,7 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
 
     }
 
+    //Redirige hacia la ventana de detalles de evento.s
     private void moveToDescription(ListEventos item, Usuarios u){
         Intent i = new Intent(this, EventDescriptionFav.class);
         i.putExtra("user", u);

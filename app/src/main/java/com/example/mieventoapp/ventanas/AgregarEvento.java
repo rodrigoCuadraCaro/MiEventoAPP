@@ -59,6 +59,7 @@ public class AgregarEvento extends AppCompatActivity {
         Buttons(u);
     }
 
+    //inicia los botones de la ventana. Requiere de un clase Usuarios para poder generar los intent.
     private void Buttons(Usuarios u){
         bttnRegistrarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -106,6 +107,9 @@ public class AgregarEvento extends AppCompatActivity {
         });
     }
 
+    /*inserta dentro de la base de datos un evento. Requiere de variables String como
+     nombre, ubicación, descripción, fecha y tipo (El cual se obtiene de un spinner). La clase usuarios
+     es necesaria para obtener el id del usuario que ingresa el evento.*/
     private void insertEvento(String nombre, Usuarios u, String ubicacion, String descripcion, String fecha, String tipo){
         String url = "https://mieventoapp.000webhostapp.com/next/agregarEvento.php?nombre="+nombre+
                 "&iduser="+u.getId()+"&ubicacion="+ubicacion+"&descripcion="+descripcion+"&fecha="+fecha+"&tipo="+tipo;
@@ -146,6 +150,7 @@ public class AgregarEvento extends AppCompatActivity {
         });
     }
 
+    /*Llena un spinner con datos desde la base de datos.*/
     private void initSpinner() {
         loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/getTipoEvento.php";
@@ -194,6 +199,9 @@ public class AgregarEvento extends AppCompatActivity {
         });
     }
 
+    /*Verifica que ningún campo esté vacío. Se requiere del valor de los campos nombre, ubicación, descripción y tipo.
+    * Retorna un string (msg) que contiene los mensajes de error de cada campo específico sin contenido.
+    * En caso contrario retorna el string (msg) con valor ""*/
     private String checkEmpty(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
         String msg = "";
         if (nombre.isEmpty()){
@@ -218,6 +226,9 @@ public class AgregarEvento extends AppCompatActivity {
         return msg;
     }
 
+    /*Verifica que los string ingresados en los campos cumplan con los caracteres requeridos.
+     * Retorna un string (msg) que contiene los mensajes de error de cada campo específico que no cumpla
+     * los parámetros. En caso contrario retorna el string (msg) con valor ""*/
     private String validateString(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
         String msg = "";
 
@@ -243,6 +254,8 @@ public class AgregarEvento extends AppCompatActivity {
         return msg;
     }
 
+    /*Expresión regular que verifica que el string ingresado sea en formato DD/MM/YYYY.
+    * Retorna True si es válido y falso en el caos contrario.*/
     private boolean validateDate(String fecha){
         Pattern dateCheck =  Pattern.compile("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1" +
                 "|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})"+

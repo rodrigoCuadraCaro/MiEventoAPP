@@ -58,6 +58,8 @@ public class EventDescriptionOrg extends AppCompatActivity {
         Buttons(u, element);
     }
 
+    //inicia los botones en la ventana, se necesitan la clase ListEventos y Usuarios para llevar la clase correspondiente
+    // a la ventana de modificación.
     private void Buttons(Usuarios u, ListEventos ev){
         bttnModificarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -99,6 +101,7 @@ public class EventDescriptionOrg extends AppCompatActivity {
         });
     }
 
+    //Elimina un evento del organizador.
     private void deleteEvento(ListEventos ev, Usuarios u){
         loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/eliminarEvento.php?idEvento="+ev.getIdEvento()+"&idUsuario="+ev.getIdOrganizador();

@@ -55,6 +55,8 @@ public class EventDescriptionAs extends AppCompatActivity {
         Buttons(element, u);
     }
 
+    //inicia los botones en la ventana, se necesitan la clase ListEventos y Usuarios para llevar la clase correspondiente
+    // a la ventana de reportes.
     private void Buttons(ListEventos ev, Usuarios u){
         bttnGuardarFav.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +87,8 @@ public class EventDescriptionAs extends AppCompatActivity {
         });
     }
 
-
+    //Revisa si el evento ya está agregado en la tabla favoritos de la base de datos.
+    //Se solicita la clase ListEventos y Usuarios para obtener su id respectiva en la consulta.
     private void checkTable(ListEventos ev, Usuarios u){
         String url = "https://mieventoapp.000webhostapp.com/next/checkFavorito.php?idEvento="+ev.getIdEvento()+"&idUsuario="+u.getId();
         client.post(url, new AsyncHttpResponseHandler() {
@@ -121,6 +124,8 @@ public class EventDescriptionAs extends AppCompatActivity {
         });
     }
 
+    //Agrega directamente en la base de datos un evento en la tabla favoritos. Se requiere el id del
+    //evento y el id del usuario para hacer la consulta.
     private void insertFavorito(int idevento, int idusuario){
         String url = "https://mieventoapp.000webhostapp.com/next/agregarFavorito.php?idEvento="+idevento+"&idUsuario="+idusuario+"";
         client.post(url, new AsyncHttpResponseHandler() {

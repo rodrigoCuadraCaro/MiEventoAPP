@@ -46,6 +46,7 @@ public class CrearCuenta extends AppCompatActivity {
         buttons();
     }
 
+    /*Inicia los botones de la ventana.*/
     private void buttons(){
         bttnRegistrar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -98,6 +99,8 @@ public class CrearCuenta extends AppCompatActivity {
         });
     }
 
+    /*Registra un usuario directamente en la base de datos. Se requiere de tres variables String
+    * nombre, mail y pass. */
     private void tryRegister(String name, String mail, String pass){
         String url = "https://mieventoapp.000webhostapp.com/next/registrarAsistente.php?correo="+mail+
                 "&nombre="+name+"&pass="+pass+"&estado=1&tipo=3";
@@ -138,6 +141,9 @@ public class CrearCuenta extends AppCompatActivity {
         });
     }
 
+    /*Verifica que los string ingresados por el usuario cumplan con los caracteres requeridos por
+    * el sistema. Retorna el String (msg) con mensajes de error específicos de cada campo.
+    * En caso contrario retorna (msg) con valor ""*/
     private String stringCheck(String name,String mail,String pass){
         String msg = "";
 
@@ -154,12 +160,17 @@ public class CrearCuenta extends AppCompatActivity {
         return msg;
     }
 
+    /*Expresión regular que verifica que cumpla con el formato de correo [nombre]@[dominio].[dominioCOM].
+    * Retorna true si es válido y false en el caso contrario.*/
     private boolean validateMail(String email){
         Pattern emailCheck =  Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = emailCheck.matcher(email);
         return matcher.find();
     }
 
+    /*Verifica que los string ingresados por el usuario no se encuentren vacíos o sin contenido.
+     * Retorna el String (msg) con mensajes de error específicos de cada campo.
+     * En caso contrario retorna (msg) con valor ""*/
     private String checkEmpty(String name, String mail, String pass){
         String msg = "";
         if (name.isEmpty()){
@@ -176,6 +187,9 @@ public class CrearCuenta extends AppCompatActivity {
         return msg;
     }
 
+    /*Verifica en la base de datos que el usuario a registrar no esté registrado. si ya se encuentra
+    * un usuario con los mismos datos, muestra un mensaje en pantalla. Caso contrario llama a la función
+    * tryRegister*/
     private void checkUser(String name, String mail, String pass){
         String url = "https://mieventoapp.000webhostapp.com/next/checkUsuario.php?email="+mail;
         client.post(url, new AsyncHttpResponseHandler() {

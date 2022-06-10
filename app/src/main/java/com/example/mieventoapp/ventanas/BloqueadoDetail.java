@@ -50,6 +50,8 @@ public class BloqueadoDetail extends AppCompatActivity {
         Buttons(sesion, report);
     }
 
+    /*Inicia los botones de la ventana. Se requiere de dos clases Usuarios, siendo sesion el usuario
+    * que está interactuando con el sistema y report el usuario a reportar.*/
     private void Buttons(Usuarios sesion, Usuarios report) {
         bttnDesbloquearUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,9 @@ public class BloqueadoDetail extends AppCompatActivity {
         });
     }
 
+    /*Cambia el estado de un usuario a "habilitado" directamente en la base de datos.
+    * Se requiere de dos clases Usuarios, siendo sesion el usuario
+    * que está interactuando con el sistema y report el usuario a modificar. */
     private void unlockUser(Usuarios sesion, Usuarios report){
         String url = "http://mieventoapp.000webhostapp.com/next/aprobarUsuario.php?iduser="+report.getId();
         client.post(url, new AsyncHttpResponseHandler() {
