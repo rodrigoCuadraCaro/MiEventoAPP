@@ -30,6 +30,8 @@ public class MenuAdmin extends AppCompatActivity {
         Buttons(u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnSolicitudes.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,7 +42,6 @@ public class MenuAdmin extends AppCompatActivity {
                 finish();
             }
         });
-
 
         bttnTickets.setOnClickListener(new View.OnClickListener() {
             @Override

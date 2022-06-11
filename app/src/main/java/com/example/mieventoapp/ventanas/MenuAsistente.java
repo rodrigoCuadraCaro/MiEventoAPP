@@ -34,6 +34,8 @@ public class MenuAsistente extends AppCompatActivity {
         Buttons(u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnEventos.setOnClickListener(new View.OnClickListener() {
             @Override

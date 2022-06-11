@@ -54,6 +54,8 @@ public class FeedAsistente extends AppCompatActivity {
         initList(u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+    * en las ventanas a las cuales redirige.*/
     private void buttons(Usuarios u){
         bttnVolverAsistente.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +68,9 @@ public class FeedAsistente extends AppCompatActivity {
         });
     }
 
+    /*Inicia la lista de eventos disponibles para el usuario. Se solicita la clase Usuarios para
+    redirigir al detalle de los eventos.
+    * */
     private void initList(Usuarios u){
         loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/listarEventos.php";
@@ -136,6 +141,8 @@ public class FeedAsistente extends AppCompatActivity {
 
     }
 
+    /*Mueve al evento y al usuario a la ventana EventDescriptionAs. Se le aplica a un evento
+    * en initList.*/
     private void moveToDescription(ListEventos item, Usuarios u){
         Intent i = new Intent(this, EventDescriptionAs.class);
         i.putExtra("user", u);

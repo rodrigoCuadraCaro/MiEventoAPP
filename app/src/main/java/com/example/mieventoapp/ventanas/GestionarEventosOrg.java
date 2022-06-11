@@ -54,6 +54,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
         initList(u);
     }
 
+    /*Inicia la lista de eventos de la sesión del organizador. Se solicita la clase Usuarios para
+    * obtener su id en la consulta en la base de datos.*/
     private void initList(Usuarios u){
         loadingScreen.startAnimation();
         String url = "https://mieventoapp.000webhostapp.com/next/listarEventosOrg.php?idOrg="+u.getId();
@@ -124,6 +126,8 @@ public class GestionarEventosOrg extends AppCompatActivity {
         });
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +150,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
         });
     }
 
+    /*Mueve al usuario y al evento hacia la ventana EventDescriptionOrg*/
     private void moveToDescription(ListEventos item, Usuarios u){
         Intent i = new Intent(GestionarEventosOrg.this, EventDescriptionOrg.class);
         i.putExtra("ListElement", item);

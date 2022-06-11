@@ -51,10 +51,14 @@ public class FeedBloqueados extends AppCompatActivity {
         initList(u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
 
     }
 
+    /*Inicia la lista con los usuarios bloqueados según la base de datos.
+    * Se solicita una clase Usuarios apra redirigir al detalle.*/
     private void initList(Usuarios sesion){
         loadingScreen.startAnimation();
         String url="http://mieventoapp.000webhostapp.com/next/listarBloqueados.php";
@@ -130,6 +134,8 @@ public class FeedBloqueados extends AppCompatActivity {
         });
     }
 
+    /*Lleva al usuario ingresado y al usuario reportado obtenido de la lista al detalle de bloqueo
+    * en la ventana BloqueadoDetail.*/
     private void moveToDescription(Usuarios sesion, Usuarios report){
         Intent i = new Intent(FeedBloqueados.this, BloqueadoDetail.class);
         i.putExtra("sesion", sesion);

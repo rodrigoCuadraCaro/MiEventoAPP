@@ -59,6 +59,9 @@ public class ReportarUsuario extends AppCompatActivity {
         Buttons(ev, u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige y la clase ListEventos para enviar los datos del evento
+     * en su ventana correspondiente.*/
     private void Buttons(ListEventos ev, Usuarios u){
         bttnReportar.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -95,6 +98,7 @@ public class ReportarUsuario extends AppCompatActivity {
         });
     }
 
+    /*Obtiene el id del radio button convirtiendolo al valor equivalente a la base de datos.*/
     private int procesarId(){
         int id = 0;
 
@@ -110,6 +114,9 @@ public class ReportarUsuario extends AppCompatActivity {
         return id;
     }
 
+    /*Inserta el reporte en la base de datos. Se solicita el evento para obtener el id del organizador,
+    * y el id del radio button. Esta función se llama siempre y cuando se haya aceptado el checkBox
+    * de TyC.*/
     private void reportUser(ListEventos ev, Usuarios u, int radiosel){
         String url = "http://mieventoapp.000webhostapp.com/next/reportarUsuario.php?iduser="+ev.getIdOrganizador()+"&tipo="+radiosel;
         client.post(url, new AsyncHttpResponseHandler() {

@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         Buttons();
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(){
         bttnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /*Realiza la consulta del email y password en la base de datos. Si encuentra
+    * estos datos, obtiene todos los datos de la tabla y los pasa al objeto Usuarios.*/
     private void tryLogin(String email, String password){
         String url = "https://mieventoapp.000webhostapp.com/next/validateUser.php?correo="+email+"&pass="+password;
         client.post(url, new AsyncHttpResponseHandler() {

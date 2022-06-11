@@ -51,6 +51,8 @@ public class VentanaTickets extends AppCompatActivity {
         initList(u);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +65,7 @@ public class VentanaTickets extends AppCompatActivity {
         });
     }
 
+    /*Inicia la lista de los usuarios que se encuentran reportados desde la base de datos.*/
     private void initList(Usuarios sesion){
         loadingScreen.startAnimation();
         String url="http://mieventoapp.000webhostapp.com/next/listarReportes.php";
@@ -130,6 +133,7 @@ public class VentanaTickets extends AppCompatActivity {
         });
     }
 
+    /*Mueve al usuario de la sesion y al usuario reportado, a la ventana ReportDetail.*/
     private void moveToDescription(Usuarios sesion, Usuarios report){
         Intent i = new Intent(VentanaTickets.this, ReportDetail.class);
         i.putExtra("sesion", sesion);

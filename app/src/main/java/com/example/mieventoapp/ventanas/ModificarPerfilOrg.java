@@ -56,6 +56,8 @@ public class ModificarPerfilOrg extends AppCompatActivity {
 
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnModificarPerfilOrg.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -108,6 +110,7 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         });
     }
 
+    /*Modifica los datos del usuario en la base de datos.*/
     private void tryModify(String name, String mail, String pass, Usuarios u){
         String url = "http://mieventoapp.000webhostapp.com/next/modificarUsuario.php?correo="+mail+
                 "&nombre="+name+"&pass="+pass+"&estado="+u.getEstado()+"&tipo="+u.getTipo()
@@ -148,6 +151,7 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         });
     }
 
+    /*Obtiene los datos actualizados del usuario desde la base de datos.*/
     private void initUsuario(Usuarios u){
         String url = "https://mieventoapp.000webhostapp.com/next/validateUser.php?correo="+u.getCorreo()+"&pass="+u.getPassword();
         client.post(url, new AsyncHttpResponseHandler() {
@@ -188,11 +192,15 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         });
     }
 
+    /*Inserta los datos obtenidos en los campos correspondientes.*/
     private void setText(Usuarios u){
         registerUsername.setText(u.getName());
         registerEmail.setText(u.getCorreo());
     }
 
+    /*Verifica que los datos cumplan con los requerimientos de caracteres para la base de datos.
+     * Retorna un string de valor "" cuando se cumplen todos los campos, de lo contrario
+     * retorna un mensaje con los campos erróneos*/
     private String stringCheck(String name,String mail,String pass){
         String msg = "";
 
@@ -209,12 +217,16 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         return msg;
     }
 
+    /*Regex que verifica que el correo esté en formato [nombre]@[dominio].
+     * Retorna true si cumple, de lo contrario false. */
     private boolean validateMail(String email){
         Pattern emailCheck =  Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
         Matcher matcher = emailCheck.matcher(email);
         return matcher.find();
     }
 
+    /*Verifica que los campos no estén vacios. Retorna un string de valor "" cuando todos los campos
+     * cumplen con el requisito, de lo contrario retorna un mensaje con el campo específico.*/
     private String checkEmpty(String name, String mail, String pass){
         String msg = "";
         if (name.isEmpty()){
@@ -231,6 +243,8 @@ public class ModificarPerfilOrg extends AppCompatActivity {
         return msg;
     }
 
+    /*Verifica que el correo del usuario no esté en uso. Si cumple, llama a tryModify. de lo
+     * contrario, muestra una alerta del error.*/
     private void checkUser(String name, String mail, String pass, Usuarios u){
         String url = "https://mieventoapp.000webhostapp.com/next/checkUsuario.php?email="+mail;
         client.post(url, new AsyncHttpResponseHandler() {

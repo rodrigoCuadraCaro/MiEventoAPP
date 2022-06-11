@@ -53,6 +53,8 @@ public class ReportDetail extends AppCompatActivity {
         Buttons(sesion, report);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige. */
     private void Buttons(Usuarios sesion, Usuarios report){
         bttnBloquear.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -114,6 +116,7 @@ public class ReportDetail extends AppCompatActivity {
         });
     }
 
+    /*Elimina un reporte específico desde la base de datos.*/
     private void tryDeleteReport(Usuarios report, Usuarios sesion){
         loadingScreen.startAnimation();
         String url = "http://mieventoapp.000webhostapp.com/next/eliminarReporte.php?idUsuario="+report.getId();

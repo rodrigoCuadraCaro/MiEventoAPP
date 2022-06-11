@@ -55,6 +55,8 @@ public class UsuariosSolAdm extends AppCompatActivity {
         Buttons(sesion);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u){
         bttnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,7 @@ public class UsuariosSolAdm extends AppCompatActivity {
         });
     }
 
+    /*Inicia la lista de los usuarios organizadores que se encuentran como estado "En Solicitud".*/
     private void initList(Usuarios sesion){
         loadingScreen.startAnimation();
         String url = "http://mieventoapp.000webhostapp.com/next/listarUsuariosSol.php";
@@ -134,6 +137,7 @@ public class UsuariosSolAdm extends AppCompatActivity {
         });
     }
 
+    /*Mueve al usuario de la sesion y al usuario en solicitud, a la ventana UserDescription.*/
     private void moveToDescription(Usuarios item, Usuarios sesion){
         Intent i = new Intent(this, UserDescription.class);
         i.putExtra("ListElement", item);

@@ -48,7 +48,11 @@ public class UserDescription extends AppCompatActivity {
         Buttons(sesion, element);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige y la clase ListEventos para enviar los datos del evento
+     * en su ventana correspondiente.*/
     private void Buttons(Usuarios sesion, Usuarios element){
+        //Aprueba un usuario para su registro
         bttnAprobar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -99,6 +103,7 @@ public class UserDescription extends AppCompatActivity {
             }
         });
 
+        //Rechaza un usuario para su registro, bloquéandolo.
         bttnRechazar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -67,6 +67,8 @@ public class ModificarEvento extends AppCompatActivity {
         Buttons(u, ev);
     }
 
+    /*Inicia los botones de la ventana, se solicita la clase Usuarios para mantener la sesión
+     * en las ventanas a las cuales redirige.*/
     private void Buttons(Usuarios u, ListEventos ev){
         bttnModificarEvento.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -112,6 +114,7 @@ public class ModificarEvento extends AppCompatActivity {
         });
     }
 
+    /*Obtiene los campos ya validados y ejecuta el comando UPDATE en la base de datos.*/
     private void updateEvento(String nombre, Usuarios u, String ubicacion, String descripcion, String fecha, String tipo, String idEvento){
         String url = "https://mieventoapp.000webhostapp.com/next/modificarEvento.php?nombre="+nombre+
                 "&iduser="+u.getId()+"&idEvento="+idEvento+"&ubicacion="+ubicacion+"&descripcion="
@@ -162,6 +165,8 @@ public class ModificarEvento extends AppCompatActivity {
         });
     }
 
+    /*Obtiene los datos actualizados desde la base de datos de un evento. Se solicitan la clase
+    * Usuarios y ListEventos para verificar que las id coincidan con las de la tabla.*/
     private void initEvento(Usuarios u, ListEventos e){
         String url = "https://mieventoapp.000webhostapp.com/next/getEvento.php?idOrg="+u.getId()+"&idEvento="+e.getIdEvento();
         client.post(url, new AsyncHttpResponseHandler() {
@@ -171,17 +176,15 @@ public class ModificarEvento extends AppCompatActivity {
                     try {
                         JSONObject json = new JSONObject(new String(responseBody));
                         ListEventos ev = new ListEventos();
-                        for (int i = 0; i < json.length(); i++){
-                            ev.setIdEvento(json.getInt("id_evento"));
-                            ev.setNombreEvento(json.getString("nombreEvento"));
-                            ev.setUbicacion(json.getString("ub_evento"));
-                            ev.setDescripcion(json.getString("desc_evento"));
-                            ev.setFecha(json.getString("fecha_evento"));
-                            ev.setIdOrganizador(json.getInt("id_usuario"));
-                            ev.setIdTipo(json.getInt("id_tipoevt"));
-                            setTextEvent(ev);
-                            initSpinner(ev.getIdTipo());
-                        }
+                        ev.setIdEvento(json.getInt("id_evento"));
+                        ev.setNombreEvento(json.getString("nombreEvento"));
+                        ev.setUbicacion(json.getString("ub_evento"));
+                        ev.setDescripcion(json.getString("desc_evento"));
+                        ev.setFecha(json.getString("fecha_evento"));
+                        ev.setIdOrganizador(json.getInt("id_usuario"));
+                        ev.setIdTipo(json.getInt("id_tipoevt"));
+                        setTextEvent(ev);
+                        initSpinner(ev.getIdTipo());
 
                     }catch(Exception e){
                         System.out.println("catch!");
@@ -207,6 +210,7 @@ public class ModificarEvento extends AppCompatActivity {
         });
     }
 
+    /*Llena un spinner con datos desde la base de datos.*/
     private void initSpinner(int id) {
         String url = "https://mieventoapp.000webhostapp.com/next/getTipoEvento.php";
         client.post(url, new AsyncHttpResponseHandler() {
@@ -255,6 +259,7 @@ public class ModificarEvento extends AppCompatActivity {
         });
     }
 
+    /*Inserta los datos obtenidos desde la base de datos en los campos correspondientes*/
     private void setTextEvent(ListEventos ev){
         spinner.setSelection(ev.getIdTipo());
         nombreEvento.setText(ev.getNombreEvento());
@@ -263,6 +268,8 @@ public class ModificarEvento extends AppCompatActivity {
         fechaEvento.setText(ev.getFecha());
     }
 
+    /*Verifican que los campos no se encuentren vacíos. Retorna un string de valor "" cuando no
+    * se encuentran campos vacíos, de lo contrario retorna un mensaje con el campo blanco.*/
     private String checkEmpty(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
         String msg = "";
         if (nombre.isEmpty()){
@@ -287,6 +294,9 @@ public class ModificarEvento extends AppCompatActivity {
         return msg;
     }
 
+    /*Verifican que los campos cumplan con los caracteres para la base de datos.
+    Retorna un string de valor "" cuando no se encuentran campos vacíos, de lo contrario retorna
+    * un mensaje con el campo erroneo.*/
     private String validateString(String nombre, String ubicacion, String descripcion, String fecha,String tipo){
         String msg = "";
 
@@ -312,6 +322,8 @@ public class ModificarEvento extends AppCompatActivity {
         return msg;
     }
 
+    /*Regex que verifica si la fecha está en formato DD/MM/YYYY. Retorna true si cumple y false
+    * cuando no cumple el formato solicitado.*/
     private boolean validateDate(String fecha){
         Pattern dateCheck =  Pattern.compile("^(?:(?:31(\\/|-|\\.)(?:0?[13578]|1[02]))\\1" +
                 "|(?:(?:29|30)(\\/|-|\\.)(?:0?[13-9]|1[0-2])\\2))(?:(?:1[6-9]|[2-9]\\d)?\\d{2})"+
