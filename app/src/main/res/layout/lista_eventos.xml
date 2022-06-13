@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/tarjetaEvento"
     android:layout_width="match_parent"
-    android:layout_height="190sp"
+    android:layout_height="wrap_content"
     android:layout_marginTop="5sp"
     android:layout_marginBottom="15sp"
     cardview:cardCornerRadius="16sp"
@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="15sp">
 
@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
@@ -39,14 +39,15 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/nombreOrganizador"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/org_symbol"
                     android:text="[ORGANIZADOR]"
                     android:layout_marginEnd="20sp"
                     android:textSize="15sp">
@@ -56,7 +57,8 @@
                 <TextView
                     android:id="@+id/fechaEvento"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_calendar_month_24"
                     android:text="[FECHA]"
                     android:layout_marginEnd="20sp"
                     android:textSize="15sp">
@@ -66,7 +68,8 @@
                 <TextView
                     android:id="@+id/ubicacionEvento"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_location_on_24"
                     android:text="[UBICACION]"
                     android:textSize="15sp">
 
@@ -76,15 +79,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="68dp">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/descEvento"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:padding="5sp"
                     android:text="Lorem ipsum dolor sit amet, consectetur adipiscing
-                                     elit. Duis luctus velit viverra elit vehicula gravida."></TextView>
+                                     elit. Duis luctus velit viverra elit vehicula gravida." />
 
             </LinearLayout>
         </LinearLayout>

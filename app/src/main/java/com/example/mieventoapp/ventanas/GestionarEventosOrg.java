@@ -44,7 +44,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
         bttnVolver = (Button) findViewById(R.id.bttnVolverOrg);
         bttnAgregarEvento = (Button) findViewById(R.id.bttnAgregarEvento);
         txtFeedVacio = findViewById(R.id.txtFeedVacio);
-        listadoEventos = findViewById(R.id.listadoEventos);
+        listadoEventos = findViewById(R.id.listadoEventosOrg);
 
         loadingScreen = new LoadingScreen(GestionarEventosOrg.this);
 
@@ -98,7 +98,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
                                     moveToDescription(item, u);
                                 }
                             });
-                            RecyclerView recyclerView = findViewById(R.id.listadoEventos);
+                            RecyclerView recyclerView = findViewById(R.id.listadoEventosOrg);
                             recyclerView.setHasFixedSize(true);
                             recyclerView.setLayoutManager(new LinearLayoutManager(GestionarEventosOrg.this));
                             recyclerView.setAdapter(listEvents);
@@ -109,6 +109,7 @@ public class GestionarEventosOrg extends AppCompatActivity {
                         AlertDialog.Builder msg = new AlertDialog.Builder(GestionarEventosOrg.this);
                         msg.setTitle("Error al listar!");
                         msg.setMessage("Hubo un error al listar intente nuevamente");
+                        System.out.println(e.getMessage());
                         loadingScreen.stopAnimation();
                         msg.show();
                     }

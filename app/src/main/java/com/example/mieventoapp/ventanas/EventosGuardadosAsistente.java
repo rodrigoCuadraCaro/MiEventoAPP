@@ -91,6 +91,13 @@ public class EventosGuardadosAsistente extends AppCompatActivity {
                             lista.add(ev);
                         }
 
+                        elements = new ArrayList<>();
+                        for (int i = 0; i < lista.size(); i++){
+                            ListEventos l = new ListEventos();
+                            l = lista.get(i);
+                            elements.add(new ListEventos(l.getIdEvento(), l.getNombreEvento(), l.getNombreOrganizador(), l.getFecha(), l.getUbicacion(), l.getDescripcion(), l.getTipoEvento(), l.getIdOrganizador()));
+                        }
+
                         if (lista.isEmpty()){
                             listadoEventos.setVisibility(View.GONE);
                             txtFeedVacio.setVisibility(View.VISIBLE);
